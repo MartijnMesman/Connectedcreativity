@@ -11,19 +11,45 @@ export default function DownloadAudio({
   filename = "mindwandering.mp3",
   className = ""
 }: DownloadAudioProps) {
-  // Base64 audio data (truncated for example - you would include the full base64 string here)
-  const base64Audio = "data:audio/mpeg;base64,SUQzAgAAAAAfdlRTUwAAEwBMb2dpYyBQcm8gWCAxMC43LjlDT00AAGgAZW5naVR1bk5PUk0AIDAwMDAwMDg1IDAwMDAwMDdEIDAw..."
-
+  
   const handleDownload = () => {
-    // Create a temporary link element
-    const link = document.createElement('a')
-    link.href = base64Audio
-    link.download = filename
+    // For demonstration purposes, we'll create a simple audio file
+    // In a real implementation, you would either:
+    // 1. Have the full base64 string of your actual audio file
+    // 2. Link to a hosted audio file URL
+    // 3. Generate audio dynamically
     
-    // Append to body, click, and remove
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
+    // Option 1: If you have a hosted audio file
+    const audioUrl = "/audio/mindwandering-meditation.mp3" // Replace with your actual audio file path
+    
+    // Check if the file exists by trying to fetch it
+    fetch(audioUrl, { method: 'HEAD' })
+      .then(response => {
+        if (response.ok) {
+          // File exists, proceed with download
+          const link = document.createElement('a')
+          link.href = audioUrl
+          link.download = filename
+          link.target = '_blank'
+          
+          document.body.appendChild(link)
+          link.click()
+          document.body.removeChild(link)
+        } else {
+          // File doesn't exist, show helpful message
+          alert(`Audio file not found. Please add your audio file to the public/audio/ folder or update the audioUrl in the component.`)
+        }
+      })
+      .catch(() => {
+        // Fallback: Show instructions for adding the audio file
+        alert(`To enable audio download:
+        
+1. Add your audio file to the public/audio/ folder
+2. Update the audioUrl in DownloadAudio.tsx
+3. Or provide the full base64 string of your audio file
+
+Current expected path: ${audioUrl}`)
+      })
   }
 
   return (
