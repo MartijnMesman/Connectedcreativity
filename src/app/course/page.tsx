@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import DownloadAudio from '@/components/DownloadAudio'
 
 const modules = [
   {
@@ -336,11 +337,12 @@ export default function CoursePage() {
                       <div className="bg-white rounded-lg p-4">
                         <h5 className="font-medium text-gray-800 mb-2">🎧 Guided Meditation</h5>
                         <p className="text-gray-600 text-sm mb-3">
-                          Listen to the 10-minute grounding meditation to prepare for the session.
+                          Download the 10-minute grounding meditation to prepare for the session.
                         </p>
-                        <button className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors">
-                          ▶️ Start Meditation
-                        </button>
+                        <DownloadAudio 
+                          title="Download Meditation"
+                          filename="grounding-meditation.mp3"
+                        />
                       </div>
                     </div>
 
@@ -396,9 +398,11 @@ export default function CoursePage() {
                             A guided walk where you let your thoughts flow freely while moving.
                           </p>
                           <div className="flex space-x-2">
-                            <button className="bg-green-600 text-white px-3 py-1 rounded text-sm hover:bg-green-700">
-                              🎧 Audio Guide
-                            </button>
+                            <DownloadAudio 
+                              title="Audio Guide"
+                              filename="walking-meditation.mp3"
+                              className="inline-block"
+                            />
                             <button className="text-green-600 border border-green-600 px-3 py-1 rounded text-sm hover:bg-green-50">
                               📋 Instructions
                             </button>
