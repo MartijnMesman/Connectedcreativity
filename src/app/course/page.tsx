@@ -160,38 +160,65 @@ export default function CoursePage() {
         return [
           {
             id: '2-1',
-            title: 'Mind Wandering Research',
-            description: 'Latest scientific findings on mind wandering and creativity',
-            url: 'https://www.example.com/mind-wandering-research',
-            linkText: 'Read Study',
+            title: 'How to Build Creative Confidence',
+            description: 'Wired article on building creative confidence through daydream and play',
+            url: 'https://www.wired.com/2013/10/how-to-build-creative-confidence-daydream-play-video-games-and-more/',
+            linkText: 'Read Article',
             category: 'article' as const,
             isAvailable: true
           },
           {
             id: '2-2',
-            title: 'Meditation Timer App',
-            description: 'Recommended app for guided meditations',
-            url: 'https://www.headspace.com',
-            linkText: 'Download App',
-            category: 'tool' as const,
+            title: 'The Big Idea: Should We Embrace Boredom?',
+            description: 'The Guardian explores the benefits of boredom for creativity',
+            url: 'https://www.theguardian.com/books/2025/jun/15/the-big-idea-should-we-embrace-boredom',
+            linkText: 'Read Article',
+            category: 'article' as const,
             isAvailable: true
           },
           {
             id: '2-3',
-            title: 'Walking Meditation Guide',
-            description: 'Detailed instructions for walking meditation practice',
-            url: '#',
-            linkText: 'View Guide',
-            category: 'resource' as const,
-            isAvailable: false
+            title: 'Mind Wandering and Creativity',
+            description: 'Scientific research on the connection between mind wandering and creative thinking',
+            url: 'https://www.wired.com/2009/10/st-thompson-2/',
+            linkText: 'Read Study',
+            category: 'article' as const,
+            isAvailable: true
           },
           {
             id: '2-4',
-            title: 'Spotify Playlist: Focus Music',
-            description: 'Curated playlist for creative focus sessions',
-            url: 'https://open.spotify.com/playlist/example',
-            linkText: 'Open Playlist',
-            category: 'external' as const,
+            title: 'In Praise of Mindless Time',
+            description: 'Discover Magazine article on the benefits of letting your mind wander',
+            url: 'https://www.discovermagazine.com/the-sciences/in-praise-of-mindless-time',
+            linkText: 'Read Article',
+            category: 'article' as const,
+            isAvailable: true
+          },
+          {
+            id: '2-5',
+            title: 'Creativity, Mind Wandering and the Default Mode Network',
+            description: 'Research on how mind wandering affects the brain\'s default mode network',
+            url: 'https://thomasramsoy.com/index.php/2024/08/26/creativity-mind-wandering-and-the-default-mode-network-of-the-brain/',
+            linkText: 'Read Research',
+            category: 'article' as const,
+            isAvailable: true
+          },
+          {
+            id: '2-6',
+            title: 'The Wandering Mind: Brain Networks and Creativity',
+            description: 'Book exploring the neuroscience behind mind wandering and creative thinking',
+            url: 'https://www.amazon.com/Wandering-Mind-Brain-Youre-Looking/dp/022623861X',
+            linkText: 'View Book',
+            category: 'resource' as const,
+            isAvailable: true
+          },
+          {
+            id: '2-7',
+            title: 'TEDx Talk: The Power of Mind Wandering',
+            description: 'Engaging video about how mind wandering enhances creativity and problem-solving',
+            url: 'https://www.youtube.com/watch?v=9O_orVpDlZo&ab_channel=TEDxTalks',
+            linkText: 'Watch Video',
+            category: 'video' as const,
             isAvailable: true
           }
         ]
@@ -335,13 +362,25 @@ export default function CoursePage() {
                 </div>
               )}
 
-              {/* Useful Links Section */}
-              <div className="mb-8">
-                <LinkCollection 
-                  title="🔗 Useful Links & Resources"
-                  links={getModuleLinks(selectedModule.week)}
-                />
-              </div>
+              {/* Research & Reading Materials Section for Week 2 */}
+              {selectedModule.week === 2 && (
+                <div className="mb-8">
+                  <LinkCollection 
+                    title="📚 Research & Reading Materials"
+                    links={getModuleLinks(selectedModule.week)}
+                  />
+                </div>
+              )}
+
+              {/* Useful Links Section for other weeks */}
+              {selectedModule.week !== 2 && (
+                <div className="mb-8">
+                  <LinkCollection 
+                    title="🔗 Useful Links & Resources"
+                    links={getModuleLinks(selectedModule.week)}
+                  />
+                </div>
+              )}
 
               {/* Individual Link Examples */}
               {selectedModule.week === 1 && (
@@ -483,24 +522,13 @@ export default function CoursePage() {
                       <p className="text-blue-700 mb-4">
                         Explore the science behind mind wandering and its connection to creativity.
                       </p>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="bg-white rounded-lg p-4">
-                          <h5 className="font-medium text-gray-800 mb-2">📖 Reading Material</h5>
-                          <p className="text-gray-600 text-sm mb-3">
-                            "The Science of Mind Wandering and Creativity" - An overview of recent research.
-                          </p>
-                          <button className="text-blue-600 hover:text-blue-800 text-sm font-medium">
-                            📄 Download PDF
-                          </button>
-                        </div>
-                        <div className="bg-white rounded-lg p-4">
-                          <h5 className="font-medium text-gray-800 mb-2">🎥 Video</h5>
-                          <p className="text-gray-600 text-sm mb-3">
-                            "How Mind Wandering Boosts Creativity" - TED Talk by Dr. Mary Immordino-Yang
-                          </p>
-                          <button className="text-blue-600 hover:text-blue-800 text-sm font-medium">
-                            ▶️ Watch Video (15 min)
-                          </button>
+                      <div className="bg-white rounded-lg p-4">
+                        <h5 className="font-medium text-gray-800 mb-3">📖 Required Reading</h5>
+                        <p className="text-gray-600 text-sm mb-3">
+                          Before starting the exercises, read through the research materials above to understand the scientific foundation of mind wandering.
+                        </p>
+                        <div className="text-blue-600 text-sm">
+                          💡 <strong>Tip:</strong> Focus especially on the Wired articles and the neuroscience research to get a solid foundation.
                         </div>
                       </div>
                     </div>
