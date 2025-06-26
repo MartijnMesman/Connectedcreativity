@@ -14,12 +14,12 @@ export default function ProgressPage() {
       completed: true,
       completedDate: "2024-12-10",
       score: 85,
-      timeSpent: "3.5 uur",
+      timeSpent: "3.5 hours",
       activities: [
-        { name: "Kennismakingsronde", completed: true, score: 90 },
-        { name: "Nieuwsgierigheids-mapping", completed: true, score: 85 },
-        { name: "Mindfulness introductie", completed: true, score: 80 },
-        { name: "Creatieve warming-up", completed: true, score: 85 }
+        { name: "Introduction round", completed: true, score: 90 },
+        { name: "Curiosity mapping", completed: true, score: 85 },
+        { name: "Mindfulness introduction", completed: true, score: 80 },
+        { name: "Creative warm-up", completed: true, score: 85 }
       ]
     },
     {
@@ -29,14 +29,14 @@ export default function ProgressPage() {
       completed: true,
       completedDate: "2024-12-12",
       score: 92,
-      timeSpent: "2.8 uur",
+      timeSpent: "2.8 hours",
       activities: [
-        { name: "Anchoring Meditatie", completed: true, score: 95 },
-        { name: "Context Leesmateriaal", completed: true, score: 88 },
-        { name: "Wandelmeditatie", completed: true, score: 92 },
+        { name: "Anchoring Meditation", completed: true, score: 95 },
+        { name: "Context Reading", completed: true, score: 88 },
+        { name: "Walking Meditation", completed: true, score: 92 },
         { name: "Stream of Consciousness", completed: true, score: 94 },
         { name: "Doodle & Dream", completed: true, score: 90 },
-        { name: "Reflectievragen", completed: true, score: 95 }
+        { name: "Reflection Questions", completed: true, score: 95 }
       ]
     },
     {
@@ -46,25 +46,25 @@ export default function ProgressPage() {
       completed: false,
       completedDate: null,
       score: null,
-      timeSpent: "0 uur",
+      timeSpent: "0 hours",
       activities: []
     }
   ]
 
   const learningGoals = [
-    { goal: "Ontwikkelen van mindfulness vaardigheden", progress: 75, category: "Presence" },
-    { goal: "Versterken van creatieve zelfvertrouwen", progress: 60, category: "Courage" },
-    { goal: "Verbeteren van samenwerkingsvaardigheden", progress: 30, category: "Collaboration" },
-    { goal: "Integreren van technologie in creatief proces", progress: 15, category: "Technology" },
-    { goal: "Bereiken van flow-states", progress: 45, category: "Flow" }
+    { goal: "Develop mindfulness skills", progress: 75, category: "Presence" },
+    { goal: "Strengthen creative confidence", progress: 60, category: "Courage" },
+    { goal: "Improve collaboration skills", progress: 30, category: "Collaboration" },
+    { goal: "Integrate technology in creative process", progress: 15, category: "Technology" },
+    { goal: "Achieve flow states", progress: 45, category: "Flow" }
   ]
 
   const skillDevelopment = [
     { skill: "Mindfulness", level: 3, maxLevel: 5, progress: 60 },
-    { skill: "Creativiteit", level: 2, maxLevel: 5, progress: 40 },
-    { skill: "Samenwerking", level: 2, maxLevel: 5, progress: 35 },
-    { skill: "Veerkracht", level: 1, maxLevel: 5, progress: 20 },
-    { skill: "Empathie", level: 2, maxLevel: 5, progress: 45 }
+    { skill: "Creativity", level: 2, maxLevel: 5, progress: 40 },
+    { skill: "Collaboration", level: 2, maxLevel: 5, progress: 35 },
+    { skill: "Resilience", level: 1, maxLevel: 5, progress: 20 },
+    { skill: "Empathy", level: 2, maxLevel: 5, progress: 45 }
   ]
 
   return (
@@ -86,7 +86,7 @@ export default function ProgressPage() {
                 Dashboard
               </Link>
               <Link href="/course" className="text-purple-600 hover:text-purple-800 font-medium">
-                Cursus
+                Course
               </Link>
               <Link href="/community" className="text-purple-600 hover:text-purple-800 font-medium">
                 Community
@@ -99,8 +99,8 @@ export default function ProgressPage() {
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">Voortgang & Analytics</h1>
-          <p className="text-lg text-gray-600">Gedetailleerd overzicht van je leertraject en ontwikkeling.</p>
+          <h1 className="text-3xl font-bold text-gray-800 mb-2">Progress & Analytics</h1>
+          <p className="text-lg text-gray-600">Detailed overview of your learning journey and development.</p>
         </div>
 
         {/* View Selector */}
@@ -114,7 +114,7 @@ export default function ProgressPage() {
                   : 'text-gray-600 hover:text-purple-600'
               }`}
             >
-              Overzicht
+              Overview
             </button>
             <button
               onClick={() => setSelectedView('detailed')}
@@ -124,7 +124,7 @@ export default function ProgressPage() {
                   : 'text-gray-600 hover:text-purple-600'
               }`}
             >
-              Gedetailleerd
+              Detailed
             </button>
             <button
               onClick={() => setSelectedView('analytics')}
@@ -146,32 +146,32 @@ export default function ProgressPage() {
             <div className="lg:col-span-2 space-y-6">
               {/* Overall Progress */}
               <div className="bg-white/70 backdrop-blur-sm rounded-xl p-6 border border-purple-200">
-                <h2 className="text-2xl font-bold text-gray-800 mb-6">Totale Voortgang</h2>
+                <h2 className="text-2xl font-bold text-gray-800 mb-6">Total Progress</h2>
                 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                   <div className="text-center">
                     <div className="text-3xl font-bold text-purple-600 mb-1">18%</div>
-                    <div className="text-gray-600">Cursus Voltooid</div>
+                    <div className="text-gray-600">Course Completed</div>
                   </div>
                   <div className="text-center">
                     <div className="text-3xl font-bold text-green-600 mb-1">88.5%</div>
-                    <div className="text-gray-600">Gemiddelde Score</div>
+                    <div className="text-gray-600">Average Score</div>
                   </div>
                   <div className="text-center">
                     <div className="text-3xl font-bold text-blue-600 mb-1">6.3</div>
-                    <div className="text-gray-600">Uren Besteed</div>
+                    <div className="text-gray-600">Hours Spent</div>
                   </div>
                 </div>
 
                 <div className="w-full bg-gray-200 rounded-full h-4 mb-4">
                   <div className="bg-gradient-to-r from-purple-600 to-blue-600 h-4 rounded-full" style={{width: '18%'}}></div>
                 </div>
-                <p className="text-center text-gray-600">2 van 11 modules voltooid</p>
+                <p className="text-center text-gray-600">2 of 11 modules completed</p>
               </div>
 
               {/* Module Progress */}
               <div className="bg-white/70 backdrop-blur-sm rounded-xl p-6 border border-purple-200">
-                <h2 className="text-2xl font-bold text-gray-800 mb-6">Module Voortgang</h2>
+                <h2 className="text-2xl font-bold text-gray-800 mb-6">Module Progress</h2>
                 <div className="space-y-4">
                   {moduleProgress.map((module) => (
                     <div key={module.week} className={`p-4 rounded-lg border-2 ${
@@ -193,11 +193,11 @@ export default function ProgressPage() {
                             ? 'bg-green-100 text-green-800' 
                             : 'bg-blue-100 text-blue-800'
                         }`}>
-                          {module.type === 'physical' ? 'Fysiek' : 'Online'}
+                          {module.type === 'physical' ? 'Physical' : 'Online'}
                         </span>
-                        <span>Tijd besteed: {module.timeSpent}</span>
+                        <span>Time spent: {module.timeSpent}</span>
                         {module.completedDate && (
-                          <span>Voltooid: {new Date(module.completedDate).toLocaleDateString('nl-NL')}</span>
+                          <span>Completed: {new Date(module.completedDate).toLocaleDateString('en-US')}</span>
                         )}
                       </div>
                     </div>
@@ -210,7 +210,7 @@ export default function ProgressPage() {
             <div className="space-y-6">
               {/* Learning Goals */}
               <div className="bg-white/70 backdrop-blur-sm rounded-xl p-6 border border-purple-200">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">Leerdoelen</h3>
+                <h3 className="text-lg font-semibold text-gray-800 mb-4">Learning Goals</h3>
                 <div className="space-y-4">
                   {learningGoals.map((goal, index) => (
                     <div key={index}>
@@ -232,27 +232,27 @@ export default function ProgressPage() {
 
               {/* Achievements */}
               <div className="bg-white/70 backdrop-blur-sm rounded-xl p-6 border border-purple-200">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">Behaalde Prestaties</h3>
+                <h3 className="text-lg font-semibold text-gray-800 mb-4">Achievements</h3>
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3 p-3 bg-yellow-50 rounded-lg border border-yellow-200">
                     <div className="text-2xl">🏆</div>
                     <div>
-                      <div className="font-medium text-gray-800">Eerste Module</div>
-                      <div className="text-sm text-gray-600">Voltooid je eerste module</div>
+                      <div className="font-medium text-gray-800">First Module</div>
+                      <div className="text-sm text-gray-600">Completed your first module</div>
                     </div>
                   </div>
                   <div className="flex items-center space-x-3 p-3 bg-blue-50 rounded-lg border border-blue-200">
                     <div className="text-2xl">🧘</div>
                     <div>
                       <div className="font-medium text-gray-800">Mindfulness Beginner</div>
-                      <div className="text-sm text-gray-600">10 meditaties voltooid</div>
+                      <div className="text-sm text-gray-600">Completed 10 meditations</div>
                     </div>
                   </div>
                   <div className="flex items-center space-x-3 p-3 bg-green-50 rounded-lg border border-green-200">
                     <div className="text-2xl">📝</div>
                     <div>
-                      <div className="font-medium text-gray-800">Reflectie Meester</div>
-                      <div className="text-sm text-gray-600">Alle reflectievragen beantwoord</div>
+                      <div className="font-medium text-gray-800">Reflection Master</div>
+                      <div className="text-sm text-gray-600">Answered all reflection questions</div>
                     </div>
                   </div>
                 </div>
@@ -273,7 +273,7 @@ export default function ProgressPage() {
                   {module.completed && (
                     <div className="text-right">
                       <div className="text-2xl font-bold text-green-600">{module.score}%</div>
-                      <div className="text-sm text-gray-600">Voltooid op {new Date(module.completedDate!).toLocaleDateString('nl-NL')}</div>
+                      <div className="text-sm text-gray-600">Completed on {new Date(module.completedDate!).toLocaleDateString('en-US')}</div>
                     </div>
                   )}
                 </div>
@@ -283,19 +283,19 @@ export default function ProgressPage() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                       <div className="bg-purple-50 p-4 rounded-lg">
                         <div className="text-lg font-bold text-purple-600">{module.score}%</div>
-                        <div className="text-sm text-gray-600">Totale Score</div>
+                        <div className="text-sm text-gray-600">Total Score</div>
                       </div>
                       <div className="bg-blue-50 p-4 rounded-lg">
                         <div className="text-lg font-bold text-blue-600">{module.timeSpent}</div>
-                        <div className="text-sm text-gray-600">Tijd Besteed</div>
+                        <div className="text-sm text-gray-600">Time Spent</div>
                       </div>
                       <div className="bg-green-50 p-4 rounded-lg">
                         <div className="text-lg font-bold text-green-600">{module.activities.length}</div>
-                        <div className="text-sm text-gray-600">Activiteiten</div>
+                        <div className="text-sm text-gray-600">Activities</div>
                       </div>
                     </div>
 
-                    <h3 className="text-lg font-semibold text-gray-800 mb-4">Activiteit Details</h3>
+                    <h3 className="text-lg font-semibold text-gray-800 mb-4">Activity Details</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {module.activities.map((activity, index) => (
                         <div key={index} className="p-4 bg-white rounded-lg border border-gray-200">
@@ -316,13 +316,13 @@ export default function ProgressPage() {
                 ) : (
                   <div className="text-center py-8">
                     <div className="text-gray-400 text-6xl mb-4">🔒</div>
-                    <h3 className="text-lg font-semibold text-gray-600 mb-2">Module Nog Niet Gestart</h3>
-                    <p className="text-gray-500 mb-4">Voltooi eerst de vorige modules om toegang te krijgen.</p>
+                    <h3 className="text-lg font-semibold text-gray-600 mb-2">Module Not Started Yet</h3>
+                    <p className="text-gray-500 mb-4">Complete the previous modules first to gain access.</p>
                     <Link 
                       href="/course"
                       className="inline-flex items-center px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
                     >
-                      Ga naar Cursus
+                      Go to Course
                     </Link>
                   </div>
                 )}
@@ -336,7 +336,7 @@ export default function ProgressPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Skill Development */}
             <div className="bg-white/70 backdrop-blur-sm rounded-xl p-6 border border-purple-200">
-              <h2 className="text-2xl font-bold text-gray-800 mb-6">Vaardigheids Ontwikkeling</h2>
+              <h2 className="text-2xl font-bold text-gray-800 mb-6">Skill Development</h2>
               <div className="space-y-6">
                 {skillDevelopment.map((skill, index) => (
                   <div key={index}>
@@ -370,32 +370,32 @@ export default function ProgressPage() {
 
             {/* Learning Patterns */}
             <div className="bg-white/70 backdrop-blur-sm rounded-xl p-6 border border-purple-200">
-              <h2 className="text-2xl font-bold text-gray-800 mb-6">Leerpatronen</h2>
+              <h2 className="text-2xl font-bold text-gray-800 mb-6">Learning Patterns</h2>
               <div className="space-y-6">
                 <div className="p-4 bg-blue-50 rounded-lg">
-                  <h3 className="font-semibold text-blue-800 mb-2">Beste Leertijd</h3>
-                  <p className="text-blue-700">Je bent het meest actief tussen 14:00-16:00</p>
+                  <h3 className="font-semibold text-blue-800 mb-2">Best Learning Time</h3>
+                  <p className="text-blue-700">You are most active between 2:00-4:00 PM</p>
                 </div>
                 <div className="p-4 bg-green-50 rounded-lg">
-                  <h3 className="font-semibold text-green-800 mb-2">Favoriete Activiteiten</h3>
-                  <p className="text-green-700">Meditatie en reflectieve oefeningen scoren het hoogst</p>
+                  <h3 className="font-semibold text-green-800 mb-2">Favorite Activities</h3>
+                  <p className="text-green-700">Meditation and reflective exercises score highest</p>
                 </div>
                 <div className="p-4 bg-purple-50 rounded-lg">
-                  <h3 className="font-semibold text-purple-800 mb-2">Leersnelheid</h3>
-                  <p className="text-purple-700">Je voltooit modules 15% sneller dan gemiddeld</p>
+                  <h3 className="font-semibold text-purple-800 mb-2">Learning Speed</h3>
+                  <p className="text-purple-700">You complete modules 15% faster than average</p>
                 </div>
                 <div className="p-4 bg-yellow-50 rounded-lg">
-                  <h3 className="font-semibold text-yellow-800 mb-2">Aandachtspunten</h3>
-                  <p className="text-yellow-700">Focus meer op samenwerkingsoefeningen voor betere balans</p>
+                  <h3 className="font-semibold text-yellow-800 mb-2">Areas for Focus</h3>
+                  <p className="text-yellow-700">Focus more on collaboration exercises for better balance</p>
                 </div>
               </div>
             </div>
 
             {/* Weekly Activity */}
             <div className="lg:col-span-2 bg-white/70 backdrop-blur-sm rounded-xl p-6 border border-purple-200">
-              <h2 className="text-2xl font-bold text-gray-800 mb-6">Weekoverzicht Activiteit</h2>
+              <h2 className="text-2xl font-bold text-gray-800 mb-6">Weekly Activity Overview</h2>
               <div className="grid grid-cols-7 gap-2 mb-4">
-                {['Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za', 'Zo'].map((day, index) => (
+                {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day, index) => (
                   <div key={index} className="text-center text-sm font-medium text-gray-600 p-2">
                     {day}
                   </div>
@@ -415,15 +415,15 @@ export default function ProgressPage() {
               <div className="flex items-center justify-center space-x-6 text-sm text-gray-600">
                 <div className="flex items-center space-x-2">
                   <div className="w-3 h-3 bg-green-600 rounded"></div>
-                  <span>Lichte activiteit</span>
+                  <span>Light activity</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <div className="w-3 h-3 bg-blue-600 rounded"></div>
-                  <span>Gemiddelde activiteit</span>
+                  <span>Moderate activity</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <div className="w-3 h-3 bg-purple-600 rounded"></div>
-                  <span>Hoge activiteit</span>
+                  <span>High activity</span>
                 </div>
               </div>
             </div>

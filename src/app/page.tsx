@@ -19,7 +19,7 @@ export default function Home() {
                 Dashboard
               </Link>
               <Link href="/progress" className="text-purple-600 hover:text-purple-800 font-medium">
-                Voortgang
+                Progress
               </Link>
               <Link href="/community" className="text-purple-600 hover:text-purple-800 font-medium">
                 Community
@@ -46,30 +46,30 @@ export default function Home() {
           </p>
           
           <p className="text-lg text-purple-700 font-medium mb-8 max-w-3xl mx-auto">
-            Versterk je creatieve vaardigheden door kunst-gebaseerde methoden en ontwikkel een diepere verbinding met jezelf, anderen en de wereld om je heen.
+            Strengthen your creative skills through arts-based methods and develop a deeper connection with yourself, others, and the world around you.
           </p>
 
           {/* Course Info Cards */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
             <div className="bg-white/70 backdrop-blur-sm rounded-xl p-6 border border-purple-200">
               <div className="text-3xl mb-2">🎓</div>
-              <h3 className="font-semibold text-gray-800 mb-1">Niveau</h3>
-              <p className="text-sm text-gray-600">3e jaar HBO</p>
+              <h3 className="font-semibold text-gray-800 mb-1">Level</h3>
+              <p className="text-sm text-gray-600">3rd Year University</p>
             </div>
             <div className="bg-white/70 backdrop-blur-sm rounded-xl p-6 border border-purple-200">
               <div className="text-3xl mb-2">⏱️</div>
-              <h3 className="font-semibold text-gray-800 mb-1">Duur</h3>
-              <p className="text-sm text-gray-600">11 weken</p>
+              <h3 className="font-semibold text-gray-800 mb-1">Duration</h3>
+              <p className="text-sm text-gray-600">11 weeks</p>
             </div>
             <div className="bg-white/70 backdrop-blur-sm rounded-xl p-6 border border-purple-200">
               <div className="text-3xl mb-2">🌐</div>
               <h3 className="font-semibold text-gray-800 mb-1">Format</h3>
-              <p className="text-sm text-gray-600">Hybride leren</p>
+              <p className="text-sm text-gray-600">Hybrid learning</p>
             </div>
             <div className="bg-white/70 backdrop-blur-sm rounded-xl p-6 border border-purple-200">
               <div className="text-3xl mb-2">🎨</div>
               <h3 className="font-semibold text-gray-800 mb-1">Focus</h3>
-              <p className="text-sm text-gray-600">Holistische creativiteit</p>
+              <p className="text-sm text-gray-600">Holistic creativity</p>
             </div>
           </div>
 
@@ -77,7 +77,7 @@ export default function Home() {
             href="/course" 
             className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 text-lg font-semibold"
           >
-            Start je creatieve reis
+            Start your creative journey
             <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
@@ -90,7 +90,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
-              Wat ga je leren?
+              What will you learn?
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -99,39 +99,39 @@ export default function Home() {
                   <span className="text-2xl">🧘</span>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-800 mb-3">Presence & Mindfulness</h3>
-                <p className="text-gray-600">Ontwikkel bewustzijn en aanwezigheid als basis voor creatieve expressie.</p>
+                <p className="text-gray-600">Develop awareness and presence as the foundation for creative expression.</p>
               </div>
               
               <div className="bg-white rounded-xl p-6 shadow-lg border border-blue-100">
                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
                   <span className="text-2xl">❤️</span>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">Empathie & Verbinding</h3>
-                <p className="text-gray-600">Versterk je vermogen om te verbinden met anderen en hun perspectieven.</p>
+                <h3 className="text-xl font-semibold text-gray-800 mb-3">Empathy & Connection</h3>
+                <p className="text-gray-600">Strengthen your ability to connect with others and understand their perspectives.</p>
               </div>
               
               <div className="bg-white rounded-xl p-6 shadow-lg border border-green-100">
                 <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
                   <span className="text-2xl">💪</span>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">Veerkracht</h3>
-                <p className="text-gray-600">Bouw mentale en emotionele veerkracht op voor creatieve uitdagingen.</p>
+                <h3 className="text-xl font-semibold text-gray-800 mb-3">Resilience</h3>
+                <p className="text-gray-600">Build mental and emotional resilience for creative challenges.</p>
               </div>
               
               <div className="bg-white rounded-xl p-6 shadow-lg border border-yellow-100">
                 <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
                   <span className="text-2xl">🤝</span>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">Samenwerking</h3>
-                <p className="text-gray-600">Leer effectief samen te werken in creatieve processen.</p>
+                <h3 className="text-xl font-semibold text-gray-800 mb-3">Collaboration</h3>
+                <p className="text-gray-600">Learn to collaborate effectively in creative processes.</p>
               </div>
               
               <div className="bg-white rounded-xl p-6 shadow-lg border border-indigo-100">
                 <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
                   <span className="text-2xl">💻</span>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">Technologie & Creativiteit</h3>
-                <p className="text-gray-600">Ontdek hoe technologie je creatieve proces kan versterken.</p>
+                <h3 className="text-xl font-semibold text-gray-800 mb-3">Technology & Creativity</h3>
+                <p className="text-gray-600">Discover how technology can enhance your creative process.</p>
               </div>
               
               <div className="bg-white rounded-xl p-6 shadow-lg border border-pink-100">
@@ -139,7 +139,7 @@ export default function Home() {
                   <span className="text-2xl">🌊</span>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-800 mb-3">Creative Flow</h3>
-                <p className="text-gray-600">Bereik en onderhoud flow-states voor optimale creativiteit.</p>
+                <p className="text-gray-600">Achieve and maintain flow states for optimal creativity.</p>
               </div>
             </div>
           </div>
@@ -151,10 +151,10 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-bold text-gray-800 mb-8">
-              Holistische Leeraanpak
+              Holistic Learning Approach
             </h2>
             <p className="text-lg text-gray-600 mb-12">
-              Elke sessie volgt een bewezen structuur die diepgaand leren en persoonlijke groei bevordert.
+              Each session follows a proven structure that promotes deep learning and personal growth.
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
@@ -163,7 +163,7 @@ export default function Home() {
                   <span className="text-white font-bold">1</span>
                 </div>
                 <h3 className="font-semibold text-purple-800 mb-2">Anchoring</h3>
-                <p className="text-sm text-purple-700">Grond jezelf en kom aan in het moment</p>
+                <p className="text-sm text-purple-700">Ground yourself and arrive in the moment</p>
               </div>
               
               <div className="bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl p-6">
@@ -171,7 +171,7 @@ export default function Home() {
                   <span className="text-white font-bold">2</span>
                 </div>
                 <h3 className="font-semibold text-blue-800 mb-2">Context</h3>
-                <p className="text-sm text-blue-700">Verken de achtergrond en theorie</p>
+                <p className="text-sm text-blue-700">Explore background and theory</p>
               </div>
               
               <div className="bg-gradient-to-br from-green-100 to-green-200 rounded-xl p-6">
@@ -179,7 +179,7 @@ export default function Home() {
                   <span className="text-white font-bold">3</span>
                 </div>
                 <h3 className="font-semibold text-green-800 mb-2">Main Exercise</h3>
-                <p className="text-sm text-green-700">Ervaar door praktische oefeningen</p>
+                <p className="text-sm text-green-700">Experience through practical exercises</p>
               </div>
               
               <div className="bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-xl p-6">
@@ -187,7 +187,7 @@ export default function Home() {
                   <span className="text-white font-bold">4</span>
                 </div>
                 <h3 className="font-semibold text-yellow-800 mb-2">Sense Making</h3>
-                <p className="text-sm text-yellow-700">Reflecteer en integreer je ervaringen</p>
+                <p className="text-sm text-yellow-700">Reflect and integrate your experiences</p>
               </div>
               
               <div className="bg-gradient-to-br from-pink-100 to-pink-200 rounded-xl p-6">
@@ -195,7 +195,7 @@ export default function Home() {
                   <span className="text-white font-bold">5</span>
                 </div>
                 <h3 className="font-semibold text-pink-800 mb-2">Take-Aways</h3>
-                <p className="text-sm text-pink-700">Neem concrete inzichten mee</p>
+                <p className="text-sm text-pink-700">Take concrete insights with you</p>
               </div>
             </div>
           </div>
@@ -206,16 +206,16 @@ export default function Home() {
       <div className="bg-gradient-to-r from-purple-600 to-blue-600 py-16">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white mb-6">
-            Klaar om je creatieve potentieel te ontdekken?
+            Ready to discover your creative potential?
           </h2>
           <p className="text-xl text-purple-100 mb-8 max-w-2xl mx-auto">
-            Begin je reis naar diepere creativiteit, authentieke verbinding en persoonlijke groei.
+            Begin your journey toward deeper creativity, authentic connection, and personal growth.
           </p>
           <Link 
             href="/course" 
             className="inline-flex items-center px-8 py-4 bg-white text-purple-600 rounded-xl hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 text-lg font-semibold"
           >
-            Start nu
+            Start now
             <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>

@@ -9,86 +9,86 @@ export default function CommunityPage() {
   const discussions = [
     {
       id: 1,
-      title: "Hoe integreer je mind wandering in een drukke dag?",
+      title: "How do you integrate mind wandering into a busy day?",
       author: "Emma van der Berg",
       module: "Week 2: Mind Wandering",
       replies: 12,
-      lastActivity: "2 uur geleden",
-      tags: ["praktisch", "tijdmanagement"],
-      excerpt: "Ik vind het lastig om tijd te maken voor mind wandering tussen al mijn verplichtingen..."
+      lastActivity: "2 hours ago",
+      tags: ["practical", "time-management"],
+      excerpt: "I find it difficult to make time for mind wandering between all my obligations..."
     },
     {
       id: 2,
-      title: "Ervaringen met de wandelmeditatie",
+      title: "Experiences with walking meditation",
       author: "Daan Jansen",
       module: "Week 2: Mind Wandering",
       replies: 8,
-      lastActivity: "5 uur geleden",
-      tags: ["meditatie", "ervaring"],
-      excerpt: "Wat een verschil maakt het om buiten te wandelen tijdens de meditatie!"
+      lastActivity: "5 hours ago",
+      tags: ["meditation", "experience"],
+      excerpt: "What a difference it makes to walk outside during meditation!"
     },
     {
       id: 3,
-      title: "Nieuwsgierigheid vs. perfectionisme",
+      title: "Curiosity vs. perfectionism",
       author: "Lisa Chen",
       module: "Week 1: Curiosity",
       replies: 15,
-      lastActivity: "1 dag geleden",
-      tags: ["mindset", "reflectie"],
-      excerpt: "Ik merk dat mijn perfectionisme soms mijn nieuwsgierigheid blokkeert..."
+      lastActivity: "1 day ago",
+      tags: ["mindset", "reflection"],
+      excerpt: "I notice that my perfectionism sometimes blocks my curiosity..."
     }
   ]
 
   const peerReviews = [
     {
       id: 1,
-      title: "Mind Wandering Reflectie - Emma",
+      title: "Mind Wandering Reflection - Emma",
       author: "Emma van der Berg",
       module: "Week 2",
-      status: "Wacht op review",
+      status: "Awaiting review",
       reviewers: 2,
       maxReviewers: 3,
-      deadline: "18 Dec 2024"
+      deadline: "Dec 18, 2024"
     },
     {
       id: 2,
-      title: "Nieuwsgierigheids-mapping - Daan",
+      title: "Curiosity Mapping - Daan",
       author: "Daan Jansen",
       module: "Week 1",
-      status: "Review beschikbaar",
+      status: "Review available",
       reviewers: 3,
       maxReviewers: 3,
-      deadline: "15 Dec 2024"
+      deadline: "Dec 15, 2024"
     }
   ]
 
   const resources = [
     {
       id: 1,
-      title: "Mindfulness Apps Vergelijking",
-      author: "Cursus Team",
-      type: "Gids",
+      title: "Mindfulness Apps Comparison",
+      author: "Course Team",
+      type: "Guide",
       downloads: 45,
       rating: 4.8,
-      description: "Overzicht van de beste mindfulness apps voor studenten"
+      description: "Overview of the best mindfulness apps for students"
     },
     {
       id: 2,
-      title: "Creatieve Inspiratie Playlist",
+      title: "Creative Inspiration Playlist",
       author: "Lisa Chen",
-      type: "Muziek",
+      type: "Music",
       downloads: 32,
       rating: 4.6,
-      description: "Spotify playlist voor creatieve flow-momenten"
+      description: "Spotify playlist for creative flow moments"
     },
     {
       id: 3,
-      title: "Mind Wandering Wetenschappelijke Artikelen",
+      title: "Mind Wandering Scientific Articles",
       author: "Dr. Sarah Williams",
-      type: "Onderzoek",
+      type: "Research",
       downloads: 28,
       rating: 4.9,
-      description: "Collectie van peer-reviewed artikelen over mind wandering"
+      description: "Collection of peer-reviewed articles about mind wandering"
     }
   ]
 
@@ -111,10 +111,10 @@ export default function CommunityPage() {
                 Dashboard
               </Link>
               <Link href="/course" className="text-purple-600 hover:text-purple-800 font-medium">
-                Cursus
+                Course
               </Link>
               <Link href="/progress" className="text-purple-600 hover:text-purple-800 font-medium">
-                Voortgang
+                Progress
               </Link>
             </div>
           </div>
@@ -125,7 +125,7 @@ export default function CommunityPage() {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-800 mb-2">Community 🤝</h1>
-          <p className="text-lg text-gray-600">Verbind met medestudenten, deel ervaringen en leer samen.</p>
+          <p className="text-lg text-gray-600">Connect with fellow students, share experiences and learn together.</p>
         </div>
 
         {/* Tab Navigation */}
@@ -139,7 +139,7 @@ export default function CommunityPage() {
                   : 'text-gray-600 hover:text-purple-600'
               }`}
             >
-              💬 Discussies
+              💬 Discussions
             </button>
             <button
               onClick={() => setSelectedTab('peer-review')}
@@ -172,7 +172,7 @@ export default function CommunityPage() {
               {/* New Discussion Button */}
               <div className="bg-white/70 backdrop-blur-sm rounded-xl p-6 border border-purple-200">
                 <button className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-4 rounded-lg hover:from-purple-700 hover:to-blue-700 transition-all duration-300 shadow-lg font-semibold">
-                  ✨ Start Nieuwe Discussie
+                  ✨ Start New Discussion
                 </button>
               </div>
 
@@ -203,7 +203,7 @@ export default function CommunityPage() {
                       </div>
                       <div className="text-right">
                         <div className="text-purple-600 font-semibold">{discussion.replies}</div>
-                        <div className="text-xs text-gray-500">reacties</div>
+                        <div className="text-xs text-gray-500">replies</div>
                       </div>
                     </div>
                     <div className="flex items-center space-x-2">
@@ -225,11 +225,11 @@ export default function CommunityPage() {
                 <h3 className="text-lg font-semibold text-gray-800 mb-4">Community Stats</h3>
                 <div className="space-y-3">
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Actieve leden</span>
+                    <span className="text-gray-600">Active members</span>
                     <span className="font-semibold text-purple-600">127</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Discussies deze week</span>
+                    <span className="text-gray-600">Discussions this week</span>
                     <span className="font-semibold text-blue-600">23</span>
                   </div>
                   <div className="flex justify-between">
@@ -241,9 +241,9 @@ export default function CommunityPage() {
 
               {/* Popular Tags */}
               <div className="bg-white/70 backdrop-blur-sm rounded-xl p-6 border border-purple-200">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">Populaire Tags</h3>
+                <h3 className="text-lg font-semibold text-gray-800 mb-4">Popular Tags</h3>
                 <div className="flex flex-wrap gap-2">
-                  {['mindfulness', 'creativiteit', 'samenwerking', 'reflectie', 'praktisch', 'inspiratie'].map((tag, index) => (
+                  {['mindfulness', 'creativity', 'collaboration', 'reflection', 'practical', 'inspiration'].map((tag, index) => (
                     <button key={index} className="bg-gray-100 hover:bg-purple-100 text-gray-700 hover:text-purple-700 text-sm px-3 py-1 rounded-full transition-colors">
                       #{tag}
                     </button>
@@ -253,7 +253,7 @@ export default function CommunityPage() {
 
               {/* Online Members */}
               <div className="bg-white/70 backdrop-blur-sm rounded-xl p-6 border border-purple-200">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">Nu Online</h3>
+                <h3 className="text-lg font-semibold text-gray-800 mb-4">Currently Online</h3>
                 <div className="space-y-3">
                   {['Emma van der Berg', 'Daan Jansen', 'Lisa Chen', 'Tom de Vries'].map((member, index) => (
                     <div key={index} className="flex items-center space-x-3">
@@ -277,29 +277,29 @@ export default function CommunityPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2 space-y-6">
               <div className="bg-white/70 backdrop-blur-sm rounded-xl p-6 border border-purple-200">
-                <h2 className="text-2xl font-bold text-gray-800 mb-6">Peer Review Systeem</h2>
+                <h2 className="text-2xl font-bold text-gray-800 mb-6">Peer Review System</h2>
                 <p className="text-gray-600 mb-6">
-                  Geef en ontvang feedback van medestudenten op je reflecties en opdrachten. 
-                  Dit helpt je om verschillende perspectieven te ontdekken en je eigen inzichten te verdiepen.
+                  Give and receive feedback from fellow students on your reflections and assignments. 
+                  This helps you discover different perspectives and deepen your own insights.
                 </p>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                   <div className="bg-blue-50 p-4 rounded-lg">
-                    <h3 className="font-semibold text-blue-800 mb-2">Hoe het werkt</h3>
+                    <h3 className="font-semibold text-blue-800 mb-2">How it works</h3>
                     <ul className="text-blue-700 text-sm space-y-1">
-                      <li>• Upload je opdracht</li>
-                      <li>• Ontvang 3 peer reviews</li>
-                      <li>• Review 3 opdrachten van anderen</li>
-                      <li>• Integreer feedback in je leerproces</li>
+                      <li>• Upload your assignment</li>
+                      <li>• Receive 3 peer reviews</li>
+                      <li>• Review 3 assignments from others</li>
+                      <li>• Integrate feedback into your learning process</li>
                     </ul>
                   </div>
                   <div className="bg-green-50 p-4 rounded-lg">
-                    <h3 className="font-semibold text-green-800 mb-2">Voordelen</h3>
+                    <h3 className="font-semibold text-green-800 mb-2">Benefits</h3>
                     <ul className="text-green-700 text-sm space-y-1">
-                      <li>• Verschillende perspectieven</li>
-                      <li>• Verbeterde reflectievaardigheden</li>
-                      <li>• Constructieve feedback</li>
-                      <li>• Community verbinding</li>
+                      <li>• Different perspectives</li>
+                      <li>• Improved reflection skills</li>
+                      <li>• Constructive feedback</li>
+                      <li>• Community connection</li>
                     </ul>
                   </div>
                 </div>
@@ -311,7 +311,7 @@ export default function CommunityPage() {
                     <div className="flex items-center justify-between mb-4">
                       <h3 className="text-lg font-semibold text-gray-800">{review.title}</h3>
                       <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                        review.status === 'Wacht op review' 
+                        review.status === 'Awaiting review' 
                           ? 'bg-yellow-100 text-yellow-800'
                           : 'bg-green-100 text-green-800'
                       }`}>
@@ -320,7 +320,7 @@ export default function CommunityPage() {
                     </div>
                     
                     <div className="flex items-center justify-between text-sm text-gray-600 mb-4">
-                      <span>Door: {review.author}</span>
+                      <span>By: {review.author}</span>
                       <span>Module: {review.module}</span>
                       <span>Deadline: {review.deadline}</span>
                     </div>
@@ -344,11 +344,11 @@ export default function CommunityPage() {
                       </div>
                       
                       <button className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                        review.status === 'Review beschikbaar'
+                        review.status === 'Review available'
                           ? 'bg-green-600 text-white hover:bg-green-700'
                           : 'bg-purple-600 text-white hover:bg-purple-700'
                       }`}>
-                        {review.status === 'Review beschikbaar' ? 'Bekijk Reviews' : 'Review Geven'}
+                        {review.status === 'Review available' ? 'View Reviews' : 'Give Review'}
                       </button>
                     </div>
                   </div>
@@ -358,31 +358,31 @@ export default function CommunityPage() {
 
             <div className="space-y-6">
               <div className="bg-white/70 backdrop-blur-sm rounded-xl p-6 border border-purple-200">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">Jouw Review Stats</h3>
+                <h3 className="text-lg font-semibold text-gray-800 mb-4">Your Review Stats</h3>
                 <div className="space-y-4">
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Reviews gegeven</span>
+                    <span className="text-gray-600">Reviews given</span>
                     <span className="font-semibold text-purple-600">8</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Reviews ontvangen</span>
+                    <span className="text-gray-600">Reviews received</span>
                     <span className="font-semibold text-blue-600">6</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Gemiddelde rating</span>
+                    <span className="text-gray-600">Average rating</span>
                     <span className="font-semibold text-green-600">4.7/5</span>
                   </div>
                 </div>
               </div>
 
               <div className="bg-white/70 backdrop-blur-sm rounded-xl p-6 border border-purple-200">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">Review Richtlijnen</h3>
+                <h3 className="text-lg font-semibold text-gray-800 mb-4">Review Guidelines</h3>
                 <ul className="text-gray-600 text-sm space-y-2">
-                  <li>• Wees constructief en respectvol</li>
-                  <li>• Geef specifieke voorbeelden</li>
-                  <li>• Highlight sterke punten</li>
-                  <li>• Suggereer verbeteringen</li>
-                  <li>• Stel vragen om reflectie te stimuleren</li>
+                  <li>• Be constructive and respectful</li>
+                  <li>• Give specific examples</li>
+                  <li>• Highlight strengths</li>
+                  <li>• Suggest improvements</li>
+                  <li>• Ask questions to stimulate reflection</li>
                 </ul>
               </div>
             </div>
@@ -395,7 +395,7 @@ export default function CommunityPage() {
             <div className="lg:col-span-3 space-y-6">
               <div className="bg-white/70 backdrop-blur-sm rounded-xl p-6 border border-purple-200">
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-2xl font-bold text-gray-800">Gedeelde Resources</h2>
+                  <h2 className="text-2xl font-bold text-gray-800">Shared Resources</h2>
                   <button className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors">
                     📤 Upload Resource
                   </button>
@@ -406,8 +406,8 @@ export default function CommunityPage() {
                     <div key={resource.id} className="bg-white rounded-lg p-4 border border-gray-200 hover:shadow-lg transition-all duration-300">
                       <div className="flex items-center justify-between mb-3">
                         <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                          resource.type === 'Gids' ? 'bg-blue-100 text-blue-800' :
-                          resource.type === 'Muziek' ? 'bg-green-100 text-green-800' :
+                          resource.type === 'Guide' ? 'bg-blue-100 text-blue-800' :
+                          resource.type === 'Music' ? 'bg-green-100 text-green-800' :
                           'bg-purple-100 text-purple-800'
                         }`}>
                           {resource.type}
@@ -422,7 +422,7 @@ export default function CommunityPage() {
                       <p className="text-gray-600 text-sm mb-3">{resource.description}</p>
                       
                       <div className="flex items-center justify-between">
-                        <span className="text-xs text-gray-500">Door: {resource.author}</span>
+                        <span className="text-xs text-gray-500">By: {resource.author}</span>
                         <div className="flex items-center space-x-2">
                           <span className="text-xs text-gray-500">{resource.downloads} downloads</span>
                           <button className="bg-purple-100 text-purple-600 px-3 py-1 rounded text-xs hover:bg-purple-200 transition-colors">
@@ -438,9 +438,9 @@ export default function CommunityPage() {
 
             <div className="space-y-6">
               <div className="bg-white/70 backdrop-blur-sm rounded-xl p-6 border border-purple-200">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">Categorieën</h3>
+                <h3 className="text-lg font-semibold text-gray-800 mb-4">Categories</h3>
                 <div className="space-y-2">
-                  {['Alle Resources', 'Gidsen & Tutorials', 'Muziek & Audio', 'Onderzoek & Artikelen', 'Tools & Apps', 'Inspiratie'].map((category, index) => (
+                  {['All Resources', 'Guides & Tutorials', 'Music & Audio', 'Research & Articles', 'Tools & Apps', 'Inspiration'].map((category, index) => (
                     <button key={index} className="w-full text-left px-3 py-2 text-gray-600 hover:text-purple-600 hover:bg-purple-50 rounded transition-colors">
                       {category}
                     </button>
@@ -449,18 +449,18 @@ export default function CommunityPage() {
               </div>
 
               <div className="bg-white/70 backdrop-blur-sm rounded-xl p-6 border border-purple-200">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">Populaire Downloads</h3>
+                <h3 className="text-lg font-semibold text-gray-800 mb-4">Popular Downloads</h3>
                 <div className="space-y-3">
                   <div className="text-sm">
-                    <div className="font-medium text-gray-800">Mindfulness Apps Vergelijking</div>
+                    <div className="font-medium text-gray-800">Mindfulness Apps Comparison</div>
                     <div className="text-gray-600">45 downloads</div>
                   </div>
                   <div className="text-sm">
-                    <div className="font-medium text-gray-800">Creatieve Inspiratie Playlist</div>
+                    <div className="font-medium text-gray-800">Creative Inspiration Playlist</div>
                     <div className="text-gray-600">32 downloads</div>
                   </div>
                   <div className="text-sm">
-                    <div className="font-medium text-gray-800">Mind Wandering Artikelen</div>
+                    <div className="font-medium text-gray-800">Mind Wandering Articles</div>
                     <div className="text-gray-600">28 downloads</div>
                   </div>
                 </div>

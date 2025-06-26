@@ -9,9 +9,9 @@ const modules = [
     title: "Physical Session 1",
     subtitle: "Introduction + Curiosity",
     type: "physical",
-    description: "Kennismaking met de cursus en het verkennen van nieuwsgierigheid als drijfveer voor creativiteit.",
-    duration: "3 uur",
-    location: "Klaslokaal",
+    description: "Introduction to the course and exploring curiosity as a driver for creativity.",
+    duration: "3 hours",
+    location: "Classroom",
     status: "available"
   },
   {
@@ -19,8 +19,8 @@ const modules = [
     title: "Online Session 1",
     subtitle: "Mind Wandering",
     type: "online",
-    description: "Ontdek de kracht van mind wandering en hoe het je creativiteit kan stimuleren.",
-    duration: "2-3 uur zelfstudie",
+    description: "Discover the power of mind wandering and how it can stimulate your creativity.",
+    duration: "2-3 hours self-study",
     location: "Online",
     status: "available"
   },
@@ -29,9 +29,9 @@ const modules = [
     title: "Physical Session 2",
     subtitle: "Collaborative Creativity",
     type: "physical",
-    description: "Leer effectief samen te werken in creatieve processen en projecten.",
-    duration: "3 uur",
-    location: "Klaslokaal",
+    description: "Learn to collaborate effectively in creative processes and projects.",
+    duration: "3 hours",
+    location: "Classroom",
     status: "locked"
   },
   {
@@ -39,8 +39,8 @@ const modules = [
     title: "Online Session 2",
     subtitle: "Intuition",
     type: "online",
-    description: "Ontwikkel je intuïtieve vaardigheden en leer deze te integreren in je creatieve werk.",
-    duration: "2-3 uur zelfstudie",
+    description: "Develop your intuitive skills and learn to integrate them into your creative work.",
+    duration: "2-3 hours self-study",
     location: "Online",
     status: "locked"
   },
@@ -49,9 +49,9 @@ const modules = [
     title: "Physical Session 3",
     subtitle: "Resilience",
     type: "physical",
-    description: "Bouw veerkracht op om creatieve uitdagingen en tegenslagen te overwinnen.",
-    duration: "3 uur",
-    location: "Klaslokaal",
+    description: "Build resilience to overcome creative challenges and setbacks.",
+    duration: "3 hours",
+    location: "Classroom",
     status: "locked"
   },
   {
@@ -59,8 +59,8 @@ const modules = [
     title: "Online Session 3",
     subtitle: "Inner Critic",
     type: "online",
-    description: "Leer omgaan met je innerlijke criticus en transformeer deze tot een bondgenoot.",
-    duration: "2-3 uur zelfstudie",
+    description: "Learn to deal with your inner critic and transform it into an ally.",
+    duration: "2-3 hours self-study",
     location: "Online",
     status: "locked"
   },
@@ -69,8 +69,8 @@ const modules = [
     title: "Online Session 4",
     subtitle: "Entrepreneurship",
     type: "online",
-    description: "Ontdek hoe creativiteit en ondernemerschap elkaar versterken.",
-    duration: "2-3 uur zelfstudie",
+    description: "Discover how creativity and entrepreneurship reinforce each other.",
+    duration: "2-3 hours self-study",
     location: "Online",
     status: "locked"
   },
@@ -79,9 +79,9 @@ const modules = [
     title: "Physical Session 4",
     subtitle: "Creative Courage",
     type: "physical",
-    description: "Ontwikkel de moed om je creatieve ideeën te delen en uit te voeren.",
-    duration: "3 uur",
-    location: "Klaslokaal",
+    description: "Develop the courage to share and execute your creative ideas.",
+    duration: "3 hours",
+    location: "Classroom",
     status: "locked"
   },
   {
@@ -89,8 +89,8 @@ const modules = [
     title: "Online Session 5",
     subtitle: "Creativity and Technology",
     type: "online",
-    description: "Verken hoe technologie je creatieve proces kan ondersteunen en verrijken.",
-    duration: "2-3 uur zelfstudie",
+    description: "Explore how technology can support and enrich your creative process.",
+    duration: "2-3 hours self-study",
     location: "Online",
     status: "locked"
   },
@@ -99,8 +99,8 @@ const modules = [
     title: "Online Session 6",
     subtitle: "Creative Flow",
     type: "online",
-    description: "Leer flow-states te bereiken en te onderhouden voor optimale creativiteit.",
-    duration: "2-3 uur zelfstudie",
+    description: "Learn to achieve and maintain flow states for optimal creativity.",
+    duration: "2-3 hours self-study",
     location: "Online",
     status: "locked"
   },
@@ -109,9 +109,9 @@ const modules = [
     title: "Physical Session 5",
     subtitle: "Your Creative Vision",
     type: "physical",
-    description: "Integreer alles wat je hebt geleerd en ontwikkel je persoonlijke creatieve visie.",
-    duration: "3 uur",
-    location: "Klaslokaal",
+    description: "Integrate everything you've learned and develop your personal creative vision.",
+    duration: "3 hours",
+    location: "Classroom",
     status: "locked"
   }
 ]
@@ -138,7 +138,7 @@ export default function CoursePage() {
                 Dashboard
               </Link>
               <Link href="/progress" className="text-purple-600 hover:text-purple-800 font-medium">
-                Voortgang
+                Progress
               </Link>
               <Link href="/community" className="text-purple-600 hover:text-purple-800 font-medium">
                 Community
@@ -153,7 +153,7 @@ export default function CoursePage() {
           {/* Module Navigation */}
           <div className="lg:col-span-1">
             <div className="bg-white/70 backdrop-blur-sm rounded-xl p-6 border border-purple-200 sticky top-24">
-              <h2 className="text-xl font-bold text-gray-800 mb-6">Cursusmodules</h2>
+              <h2 className="text-xl font-bold text-gray-800 mb-6">Course Modules</h2>
               <div className="space-y-3">
                 {modules.map((module) => (
                   <button
@@ -174,7 +174,7 @@ export default function CoursePage() {
                           <span className="text-sm font-medium">Week {module.week}</span>
                           {module.type === 'physical' ? (
                             <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">
-                              Fysiek
+                              Physical
                             </span>
                           ) : (
                             <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">
@@ -207,11 +207,11 @@ export default function CoursePage() {
                   </span>
                   {selectedModule.type === 'physical' ? (
                     <span className="text-sm font-medium text-green-600 bg-green-100 px-3 py-1 rounded-full">
-                      🏫 Fysieke Sessie
+                      🏫 Physical Session
                     </span>
                   ) : (
                     <span className="text-sm font-medium text-blue-600 bg-blue-100 px-3 py-1 rounded-full">
-                      💻 Online Zelfstudie
+                      💻 Online Self-Study
                     </span>
                   )}
                 </div>
@@ -245,50 +245,50 @@ export default function CoursePage() {
               {selectedModule.week === 1 && (
                 <div className="space-y-8">
                   <div className="bg-gradient-to-r from-purple-100 to-blue-100 rounded-lg p-6">
-                    <h3 className="text-xl font-semibold text-gray-800 mb-4">Leerdoelen</h3>
+                    <h3 className="text-xl font-semibold text-gray-800 mb-4">Learning Objectives</h3>
                     <ul className="space-y-2 text-gray-700">
                       <li className="flex items-start space-x-2">
                         <span className="text-purple-600 mt-1">•</span>
-                        <span>Kennismaken met medestudenten en de cursusopzet</span>
+                        <span>Get acquainted with fellow students and the course structure</span>
                       </li>
                       <li className="flex items-start space-x-2">
                         <span className="text-purple-600 mt-1">•</span>
-                        <span>Verkennen van persoonlijke nieuwsgierigheid en intrinsieke motivatie</span>
+                        <span>Explore personal curiosity and intrinsic motivation</span>
                       </li>
                       <li className="flex items-start space-x-2">
                         <span className="text-purple-600 mt-1">•</span>
-                        <span>Begrijpen van de holistische benadering van creativiteit</span>
+                        <span>Understand the holistic approach to creativity</span>
                       </li>
                       <li className="flex items-start space-x-2">
                         <span className="text-purple-600 mt-1">•</span>
-                        <span>Eerste ervaring met mindfulness en aanwezigheid</span>
+                        <span>First experience with mindfulness and presence</span>
                       </li>
                     </ul>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="bg-white rounded-lg p-6 border border-gray-200">
-                      <h4 className="font-semibold text-gray-800 mb-3">📚 Voorbereiding</h4>
+                      <h4 className="font-semibold text-gray-800 mb-3">📚 Preparation</h4>
                       <p className="text-gray-600 text-sm">
-                        Geen specifieke voorbereiding vereist. Kom met een open houding en nieuwsgierigheid naar jezelf en anderen.
+                        No specific preparation required. Come with an open attitude and curiosity about yourself and others.
                       </p>
                     </div>
                     <div className="bg-white rounded-lg p-6 border border-gray-200">
-                      <h4 className="font-semibold text-gray-800 mb-3">🎯 Activiteiten</h4>
+                      <h4 className="font-semibold text-gray-800 mb-3">🎯 Activities</h4>
                       <ul className="text-gray-600 text-sm space-y-1">
-                        <li>• Kennismakingsronde</li>
-                        <li>• Nieuwsgierigheids-mapping</li>
-                        <li>• Mindfulness introductie</li>
-                        <li>• Creatieve warming-up</li>
+                        <li>• Introduction round</li>
+                        <li>• Curiosity mapping</li>
+                        <li>• Mindfulness introduction</li>
+                        <li>• Creative warm-up</li>
                       </ul>
                     </div>
                   </div>
 
                   <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
-                    <h4 className="font-semibold text-yellow-800 mb-3">💡 Tip voor deze week</h4>
+                    <h4 className="font-semibold text-yellow-800 mb-3">💡 Tip for this week</h4>
                     <p className="text-yellow-700">
-                      Houd een 'nieuwsgierigheids-dagboek' bij. Noteer dagelijks drie dingen die je nieuwsgierig maken, 
-                      hoe klein ook. Dit helpt je bewust te worden van je natuurlijke interesse en verwondering.
+                      Keep a 'curiosity journal'. Note three things that make you curious each day, 
+                      no matter how small. This helps you become aware of your natural interest and wonder.
                     </p>
                   </div>
                 </div>
@@ -297,30 +297,30 @@ export default function CoursePage() {
               {selectedModule.week === 2 && (
                 <div className="space-y-8">
                   <div className="bg-gradient-to-r from-blue-100 to-green-100 rounded-lg p-6">
-                    <h3 className="text-xl font-semibold text-gray-800 mb-4">Leerdoelen</h3>
+                    <h3 className="text-xl font-semibold text-gray-800 mb-4">Learning Objectives</h3>
                     <ul className="space-y-2 text-gray-700">
                       <li className="flex items-start space-x-2">
                         <span className="text-blue-600 mt-1">•</span>
-                        <span>Begrijpen wat mind wandering is en hoe het creativiteit bevordert</span>
+                        <span>Understand what mind wandering is and how it promotes creativity</span>
                       </li>
                       <li className="flex items-start space-x-2">
                         <span className="text-blue-600 mt-1">•</span>
-                        <span>Ervaren van verschillende mind wandering technieken</span>
+                        <span>Experience different mind wandering techniques</span>
                       </li>
                       <li className="flex items-start space-x-2">
                         <span className="text-blue-600 mt-1">•</span>
-                        <span>Ontwikkelen van bewustzijn voor je eigen denkpatronen</span>
+                        <span>Develop awareness of your own thought patterns</span>
                       </li>
                       <li className="flex items-start space-x-2">
                         <span className="text-blue-600 mt-1">•</span>
-                        <span>Integreren van mind wandering in je dagelijkse routine</span>
+                        <span>Integrate mind wandering into your daily routine</span>
                       </li>
                     </ul>
                   </div>
 
                   {/* Session Structure */}
                   <div className="space-y-6">
-                    <h3 className="text-2xl font-semibold text-gray-800">Sessie Structuur</h3>
+                    <h3 className="text-2xl font-semibold text-gray-800">Session Structure</h3>
                     
                     {/* Anchoring */}
                     <div className="bg-purple-50 border-l-4 border-purple-500 rounded-lg p-6">
@@ -331,15 +331,15 @@ export default function CoursePage() {
                         <h4 className="text-lg font-semibold text-purple-800">Anchoring (10 min)</h4>
                       </div>
                       <p className="text-purple-700 mb-4">
-                        Begin met een korte mindfulness oefening om jezelf te gronden en volledig aanwezig te zijn.
+                        Begin with a short mindfulness exercise to ground yourself and be fully present.
                       </p>
                       <div className="bg-white rounded-lg p-4">
-                        <h5 className="font-medium text-gray-800 mb-2">🎧 Geleide Meditatie</h5>
+                        <h5 className="font-medium text-gray-800 mb-2">🎧 Guided Meditation</h5>
                         <p className="text-gray-600 text-sm mb-3">
-                          Luister naar de 10-minuten grounding meditatie om je voor te bereiden op de sessie.
+                          Listen to the 10-minute grounding meditation to prepare for the session.
                         </p>
                         <button className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors">
-                          ▶️ Start Meditatie
+                          ▶️ Start Meditation
                         </button>
                       </div>
                     </div>
@@ -353,13 +353,13 @@ export default function CoursePage() {
                         <h4 className="text-lg font-semibold text-blue-800">Context (20 min)</h4>
                       </div>
                       <p className="text-blue-700 mb-4">
-                        Verken de wetenschap achter mind wandering en de verbinding met creativiteit.
+                        Explore the science behind mind wandering and its connection to creativity.
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="bg-white rounded-lg p-4">
-                          <h5 className="font-medium text-gray-800 mb-2">📖 Leesmateriaal</h5>
+                          <h5 className="font-medium text-gray-800 mb-2">📖 Reading Material</h5>
                           <p className="text-gray-600 text-sm mb-3">
-                            "The Science of Mind Wandering and Creativity" - Een overzicht van recent onderzoek.
+                            "The Science of Mind Wandering and Creativity" - An overview of recent research.
                           </p>
                           <button className="text-blue-600 hover:text-blue-800 text-sm font-medium">
                             📄 Download PDF
@@ -368,10 +368,10 @@ export default function CoursePage() {
                         <div className="bg-white rounded-lg p-4">
                           <h5 className="font-medium text-gray-800 mb-2">🎥 Video</h5>
                           <p className="text-gray-600 text-sm mb-3">
-                            "How Mind Wandering Boosts Creativity" - TED Talk door Dr. Mary Immordino-Yang
+                            "How Mind Wandering Boosts Creativity" - TED Talk by Dr. Mary Immordino-Yang
                           </p>
                           <button className="text-blue-600 hover:text-blue-800 text-sm font-medium">
-                            ▶️ Bekijk Video (15 min)
+                            ▶️ Watch Video (15 min)
                           </button>
                         </div>
                       </div>
@@ -386,21 +386,21 @@ export default function CoursePage() {
                         <h4 className="text-lg font-semibold text-green-800">Main Exercise (45 min)</h4>
                       </div>
                       <p className="text-green-700 mb-4">
-                        Ervaar verschillende mind wandering technieken en ontdek welke het beste bij jou passen.
+                        Experience different mind wandering techniques and discover which ones work best for you.
                       </p>
                       
                       <div className="space-y-4">
                         <div className="bg-white rounded-lg p-4">
-                          <h5 className="font-medium text-gray-800 mb-2">🚶‍♀️ Wandelmeditatie (15 min)</h5>
+                          <h5 className="font-medium text-gray-800 mb-2">🚶‍♀️ Walking Meditation (15 min)</h5>
                           <p className="text-gray-600 text-sm mb-3">
-                            Een geleide wandeling waarbij je je gedachten vrij laat stromen terwijl je beweegt.
+                            A guided walk where you let your thoughts flow freely while moving.
                           </p>
                           <div className="flex space-x-2">
                             <button className="bg-green-600 text-white px-3 py-1 rounded text-sm hover:bg-green-700">
-                              🎧 Audio Gids
+                              🎧 Audio Guide
                             </button>
                             <button className="text-green-600 border border-green-600 px-3 py-1 rounded text-sm hover:bg-green-50">
-                              📋 Instructies
+                              📋 Instructions
                             </button>
                           </div>
                         </div>
@@ -408,7 +408,7 @@ export default function CoursePage() {
                         <div className="bg-white rounded-lg p-4">
                           <h5 className="font-medium text-gray-800 mb-2">✍️ Stream of Consciousness Writing (15 min)</h5>
                           <p className="text-gray-600 text-sm mb-3">
-                            Schrijf 15 minuten non-stop zonder je te bekommeren om grammatica of logica.
+                            Write for 15 minutes non-stop without worrying about grammar or logic.
                           </p>
                           <div className="flex space-x-2">
                             <button className="bg-green-600 text-white px-3 py-1 rounded text-sm hover:bg-green-700">
@@ -423,14 +423,14 @@ export default function CoursePage() {
                         <div className="bg-white rounded-lg p-4">
                           <h5 className="font-medium text-gray-800 mb-2">🎨 Doodle & Dream (15 min)</h5>
                           <p className="text-gray-600 text-sm mb-3">
-                            Teken vrij terwijl je je gedachten laat dwalen. Geen artistieke vaardigheden vereist.
+                            Draw freely while letting your thoughts wander. No artistic skills required.
                           </p>
                           <div className="flex space-x-2">
                             <button className="bg-green-600 text-white px-3 py-1 rounded text-sm hover:bg-green-700">
-                              🎵 Achtergrondmuziek
+                              🎵 Background Music
                             </button>
                             <button className="text-green-600 border border-green-600 px-3 py-1 rounded text-sm hover:bg-green-50">
-                              🖼️ Voorbeelden
+                              🖼️ Examples
                             </button>
                           </div>
                         </div>
@@ -446,39 +446,39 @@ export default function CoursePage() {
                         <h4 className="text-lg font-semibold text-yellow-800">Sense Making (20 min)</h4>
                       </div>
                       <p className="text-yellow-700 mb-4">
-                        Reflecteer op je ervaringen en ontdek patronen in je mind wandering.
+                        Reflect on your experiences and discover patterns in your mind wandering.
                       </p>
                       
                       <div className="bg-white rounded-lg p-4">
-                        <h5 className="font-medium text-gray-800 mb-3">🤔 Reflectievragen</h5>
+                        <h5 className="font-medium text-gray-800 mb-3">🤔 Reflection Questions</h5>
                         <div className="space-y-3 text-gray-700">
                           <div className="p-3 bg-gray-50 rounded">
-                            <p className="font-medium mb-1">1. Welke techniek voelde het meest natuurlijk?</p>
+                            <p className="font-medium mb-1">1. Which technique felt most natural?</p>
                             <textarea 
                               className="w-full p-2 border border-gray-300 rounded text-sm" 
                               rows={2}
-                              placeholder="Typ je antwoord hier..."
+                              placeholder="Type your answer here..."
                             ></textarea>
                           </div>
                           <div className="p-3 bg-gray-50 rounded">
-                            <p className="font-medium mb-1">2. Welke gedachten of ideeën kwamen spontaan op?</p>
+                            <p className="font-medium mb-1">2. What thoughts or ideas came up spontaneously?</p>
                             <textarea 
                               className="w-full p-2 border border-gray-300 rounded text-sm" 
                               rows={2}
-                              placeholder="Typ je antwoord hier..."
+                              placeholder="Type your answer here..."
                             ></textarea>
                           </div>
                           <div className="p-3 bg-gray-50 rounded">
-                            <p className="font-medium mb-1">3. Hoe zou je mind wandering in je dagelijkse routine kunnen integreren?</p>
+                            <p className="font-medium mb-1">3. How could you integrate mind wandering into your daily routine?</p>
                             <textarea 
                               className="w-full p-2 border border-gray-300 rounded text-sm" 
                               rows={2}
-                              placeholder="Typ je antwoord hier..."
+                              placeholder="Type your answer here..."
                             ></textarea>
                           </div>
                         </div>
                         <button className="mt-4 bg-yellow-600 text-white px-4 py-2 rounded hover:bg-yellow-700 transition-colors">
-                          💾 Bewaar Reflectie
+                          💾 Save Reflection
                         </button>
                       </div>
                     </div>
@@ -492,14 +492,14 @@ export default function CoursePage() {
                         <h4 className="text-lg font-semibold text-pink-800">Take-Aways (15 min)</h4>
                       </div>
                       <p className="text-pink-700 mb-4">
-                        Concrete acties en inzichten om mee te nemen naar je dagelijkse leven.
+                        Concrete actions and insights to take into your daily life.
                       </p>
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="bg-white rounded-lg p-4">
-                          <h5 className="font-medium text-gray-800 mb-2">📝 Persoonlijk Actieplan</h5>
+                          <h5 className="font-medium text-gray-800 mb-2">📝 Personal Action Plan</h5>
                           <p className="text-gray-600 text-sm mb-3">
-                            Maak een plan om mind wandering de komende week te oefenen.
+                            Create a plan to practice mind wandering in the coming week.
                           </p>
                           <button className="text-pink-600 hover:text-pink-800 text-sm font-medium">
                             📋 Download Template
@@ -509,9 +509,9 @@ export default function CoursePage() {
                           <h5 className="font-medium text-gray-800 mb-2">🔗 Extra Resources</h5>
                           <ul className="text-gray-600 text-sm space-y-1">
                             <li>• Mind wandering apps</li>
-                            <li>• Wetenschappelijke artikelen</li>
+                            <li>• Scientific articles</li>
                             <li>• Community forum</li>
-                            <li>• Volgende week voorbereiding</li>
+                            <li>• Next week preparation</li>
                           </ul>
                         </div>
                       </div>
@@ -520,17 +520,17 @@ export default function CoursePage() {
 
                   {/* Assignment */}
                   <div className="bg-gradient-to-r from-indigo-100 to-purple-100 rounded-lg p-6">
-                    <h3 className="text-xl font-semibold text-gray-800 mb-4">📚 Opdracht voor volgende week</h3>
+                    <h3 className="text-xl font-semibold text-gray-800 mb-4">📚 Assignment for next week</h3>
                     <p className="text-gray-700 mb-4">
-                      Oefen dagelijks 10 minuten mind wandering met de techniek die het beste bij je paste. 
-                      Houd een logboek bij van interessante gedachten of ideeën die opkomen.
+                      Practice 10 minutes of mind wandering daily using the technique that worked best for you. 
+                      Keep a log of interesting thoughts or ideas that arise.
                     </p>
                     <div className="flex space-x-3">
                       <button className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors">
-                        📋 Download Logboek Template
+                        📋 Download Log Template
                       </button>
                       <button className="text-indigo-600 border border-indigo-600 px-4 py-2 rounded-lg hover:bg-indigo-50 transition-colors">
-                        💬 Deel in Community
+                        💬 Share in Community
                       </button>
                     </div>
                   </div>
@@ -545,15 +545,15 @@ export default function CoursePage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-600 mb-2">Module Vergrendeld</h3>
+                  <h3 className="text-xl font-semibold text-gray-600 mb-2">Module Locked</h3>
                   <p className="text-gray-500 mb-6">
-                    Voltooi eerst de vorige modules om toegang te krijgen tot deze inhoud.
+                    Complete the previous modules first to gain access to this content.
                   </p>
                   <Link 
                     href="/progress" 
                     className="inline-flex items-center px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
                   >
-                    Bekijk Voortgang
+                    View Progress
                     <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
@@ -571,15 +571,15 @@ export default function CoursePage() {
                     <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                     </svg>
-                    Terug naar overzicht
+                    Back to overview
                   </Link>
                   
                   <div className="flex space-x-3">
                     <button className="px-6 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors">
-                      💾 Bewaar Voortgang
+                      💾 Save Progress
                     </button>
                     <button className="px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg hover:from-purple-700 hover:to-blue-700 transition-all duration-300 shadow-lg">
-                      ✅ Markeer als Voltooid
+                      ✅ Mark as Complete
                     </button>
                   </div>
                 </div>
