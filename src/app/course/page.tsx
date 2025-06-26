@@ -4,6 +4,8 @@ import { useState } from 'react'
 import Link from 'next/link'
 import DownloadAudio from '@/components/DownloadAudio'
 import PowerPointDownload from '@/components/PowerPointDownload'
+import LinkShare from '@/components/LinkShare'
+import LinkCollection from '@/components/LinkCollection'
 
 const modules = [
   {
@@ -120,6 +122,83 @@ const modules = [
 
 export default function CoursePage() {
   const [selectedModule, setSelectedModule] = useState(modules[0])
+
+  // Example links for different modules - you can customize these
+  const getModuleLinks = (week: number) => {
+    switch (week) {
+      case 1:
+        return [
+          {
+            id: '1-1',
+            title: 'Curiosity Research Paper',
+            description: 'Scientific research on curiosity and creativity',
+            url: 'https://www.example.com/curiosity-research',
+            linkText: 'Read Paper',
+            category: 'article' as const,
+            isAvailable: true
+          },
+          {
+            id: '1-2',
+            title: 'TED Talk: The Power of Curiosity',
+            description: 'Inspiring talk about curiosity in learning',
+            url: 'https://www.ted.com/talks/curiosity',
+            linkText: 'Watch Video',
+            category: 'video' as const,
+            isAvailable: true
+          },
+          {
+            id: '1-3',
+            title: 'Curiosity Assessment Tool',
+            description: 'Online tool to measure your curiosity levels',
+            url: '#',
+            linkText: 'Take Assessment',
+            category: 'tool' as const,
+            isAvailable: false
+          }
+        ]
+      case 2:
+        return [
+          {
+            id: '2-1',
+            title: 'Mind Wandering Research',
+            description: 'Latest scientific findings on mind wandering and creativity',
+            url: 'https://www.example.com/mind-wandering-research',
+            linkText: 'Read Study',
+            category: 'article' as const,
+            isAvailable: true
+          },
+          {
+            id: '2-2',
+            title: 'Meditation Timer App',
+            description: 'Recommended app for guided meditations',
+            url: 'https://www.headspace.com',
+            linkText: 'Download App',
+            category: 'tool' as const,
+            isAvailable: true
+          },
+          {
+            id: '2-3',
+            title: 'Walking Meditation Guide',
+            description: 'Detailed instructions for walking meditation practice',
+            url: '#',
+            linkText: 'View Guide',
+            category: 'resource' as const,
+            isAvailable: false
+          },
+          {
+            id: '2-4',
+            title: 'Spotify Playlist: Focus Music',
+            description: 'Curated playlist for creative focus sessions',
+            url: 'https://open.spotify.com/playlist/example',
+            linkText: 'Open Playlist',
+            category: 'external' as const,
+            isAvailable: true
+          }
+        ]
+      default:
+        return []
+    }
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-green-50">
@@ -252,6 +331,39 @@ export default function CoursePage() {
                     filename={`week-${selectedModule.week}-${selectedModule.subtitle.toLowerCase().replace(/\s+/g, '-')}.pptx`}
                     downloadUrl="#" // Replace with actual URL when available
                     isAvailable={selectedModule.week === 1} // Example: only Week 1 is available
+                  />
+                </div>
+              )}
+
+              {/* Useful Links Section */}
+              <div className="mb-8">
+                <LinkCollection 
+                  title="🔗 Useful Links & Resources"
+                  links={getModuleLinks(selectedModule.week)}
+                />
+              </div>
+
+              {/* Individual Link Examples */}
+              {selectedModule.week === 1 && (
+                <div className="mb-8 space-y-4">
+                  <h3 className="text-xl font-semibold text-gray-800">📚 Additional Resources</h3>
+                  
+                  <LinkShare
+                    title="Course Syllabus"
+                    description="Complete overview of the 11-week curriculum"
+                    url="https://example.com/syllabus.pdf"
+                    linkText="Download PDF"
+                    category="resource"
+                    isAvailable={true}
+                  />
+                  
+                  <LinkShare
+                    title="Student Handbook"
+                    description="Guidelines, expectations, and practical information"
+                    url="#"
+                    linkText="View Handbook"
+                    category="resource"
+                    isAvailable={false}
                   />
                 </div>
               )}
