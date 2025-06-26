@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import DownloadAudio from '@/components/DownloadAudio'
+import PowerPointDownload from '@/components/PowerPointDownload'
 
 const modules = [
   {
@@ -241,6 +242,19 @@ export default function CoursePage() {
                   </div>
                 </div>
               </div>
+
+              {/* PowerPoint Download Section for Physical Sessions */}
+              {selectedModule.type === 'physical' && (
+                <div className="mb-8">
+                  <h3 className="text-xl font-semibold text-gray-800 mb-4">📊 Session Materials</h3>
+                  <PowerPointDownload 
+                    title={`${selectedModule.subtitle} - Session Slides`}
+                    filename={`week-${selectedModule.week}-${selectedModule.subtitle.toLowerCase().replace(/\s+/g, '-')}.pptx`}
+                    downloadUrl="#" // Replace with actual URL when available
+                    isAvailable={selectedModule.week === 1} // Example: only Week 1 is available
+                  />
+                </div>
+              )}
 
               {/* Module Content Based on Week */}
               {selectedModule.week === 1 && (
@@ -536,6 +550,186 @@ export default function CoursePage() {
                       <button className="text-indigo-600 border border-indigo-600 px-4 py-2 rounded-lg hover:bg-indigo-50 transition-colors">
                         💬 Share in Community
                       </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Physical Session Content for Week 3 */}
+              {selectedModule.week === 3 && selectedModule.type === 'physical' && (
+                <div className="space-y-8">
+                  <div className="bg-gradient-to-r from-green-100 to-blue-100 rounded-lg p-6">
+                    <h3 className="text-xl font-semibold text-gray-800 mb-4">Learning Objectives</h3>
+                    <ul className="space-y-2 text-gray-700">
+                      <li className="flex items-start space-x-2">
+                        <span className="text-green-600 mt-1">•</span>
+                        <span>Understand the principles of effective creative collaboration</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <span className="text-green-600 mt-1">•</span>
+                        <span>Experience different collaborative creative techniques</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <span className="text-green-600 mt-1">•</span>
+                        <span>Develop skills for giving and receiving creative feedback</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <span className="text-green-600 mt-1">•</span>
+                        <span>Practice building on others' ideas constructively</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="bg-white rounded-lg p-6 border border-gray-200">
+                      <h4 className="font-semibold text-gray-800 mb-3">📚 Preparation</h4>
+                      <p className="text-gray-600 text-sm">
+                        Review your mind wandering experiences from last week. Bring any insights or ideas you'd like to explore collaboratively.
+                      </p>
+                    </div>
+                    <div className="bg-white rounded-lg p-6 border border-gray-200">
+                      <h4 className="font-semibold text-gray-800 mb-3">🎯 Activities</h4>
+                      <ul className="text-gray-600 text-sm space-y-1">
+                        <li>• Collaborative brainstorming</li>
+                        <li>• "Yes, and..." exercises</li>
+                        <li>• Group creative challenges</li>
+                        <li>• Feedback practice sessions</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Physical Session Content for Week 5 */}
+              {selectedModule.week === 5 && selectedModule.type === 'physical' && (
+                <div className="space-y-8">
+                  <div className="bg-gradient-to-r from-orange-100 to-red-100 rounded-lg p-6">
+                    <h3 className="text-xl font-semibold text-gray-800 mb-4">Learning Objectives</h3>
+                    <ul className="space-y-2 text-gray-700">
+                      <li className="flex items-start space-x-2">
+                        <span className="text-orange-600 mt-1">•</span>
+                        <span>Understand resilience as a key component of creative practice</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <span className="text-orange-600 mt-1">•</span>
+                        <span>Learn strategies for bouncing back from creative setbacks</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <span className="text-orange-600 mt-1">•</span>
+                        <span>Practice reframing failure as learning opportunity</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <span className="text-orange-600 mt-1">•</span>
+                        <span>Develop personal resilience toolkit</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="bg-white rounded-lg p-6 border border-gray-200">
+                      <h4 className="font-semibold text-gray-800 mb-3">📚 Preparation</h4>
+                      <p className="text-gray-600 text-sm">
+                        Reflect on a recent creative challenge or setback. What did you learn from it? How did you respond?
+                      </p>
+                    </div>
+                    <div className="bg-white rounded-lg p-6 border border-gray-200">
+                      <h4 className="font-semibold text-gray-800 mb-3">🎯 Activities</h4>
+                      <ul className="text-gray-600 text-sm space-y-1">
+                        <li>• Resilience assessment</li>
+                        <li>• Failure reframing exercises</li>
+                        <li>• Stress management techniques</li>
+                        <li>• Building support networks</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Physical Session Content for Week 8 */}
+              {selectedModule.week === 8 && selectedModule.type === 'physical' && (
+                <div className="space-y-8">
+                  <div className="bg-gradient-to-r from-red-100 to-pink-100 rounded-lg p-6">
+                    <h3 className="text-xl font-semibold text-gray-800 mb-4">Learning Objectives</h3>
+                    <ul className="space-y-2 text-gray-700">
+                      <li className="flex items-start space-x-2">
+                        <span className="text-red-600 mt-1">•</span>
+                        <span>Identify and overcome creative fears and blocks</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <span className="text-red-600 mt-1">•</span>
+                        <span>Develop courage to share creative work publicly</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <span className="text-red-600 mt-1">•</span>
+                        <span>Practice presenting ideas with confidence</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <span className="text-red-600 mt-1">•</span>
+                        <span>Build supportive creative community</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="bg-white rounded-lg p-6 border border-gray-200">
+                      <h4 className="font-semibold text-gray-800 mb-3">📚 Preparation</h4>
+                      <p className="text-gray-600 text-sm">
+                        Bring a creative project or idea you've been hesitant to share. We'll practice presenting in a supportive environment.
+                      </p>
+                    </div>
+                    <div className="bg-white rounded-lg p-6 border border-gray-200">
+                      <h4 className="font-semibold text-gray-800 mb-3">🎯 Activities</h4>
+                      <ul className="text-gray-600 text-sm space-y-1">
+                        <li>• Fear identification exercises</li>
+                        <li>• Courage building activities</li>
+                        <li>• Presentation practice</li>
+                        <li>• Supportive feedback circles</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Physical Session Content for Week 11 */}
+              {selectedModule.week === 11 && selectedModule.type === 'physical' && (
+                <div className="space-y-8">
+                  <div className="bg-gradient-to-r from-purple-100 to-indigo-100 rounded-lg p-6">
+                    <h3 className="text-xl font-semibold text-gray-800 mb-4">Learning Objectives</h3>
+                    <ul className="space-y-2 text-gray-700">
+                      <li className="flex items-start space-x-2">
+                        <span className="text-purple-600 mt-1">•</span>
+                        <span>Integrate all learning from the course into a personal creative vision</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <span className="text-purple-600 mt-1">•</span>
+                        <span>Create a concrete action plan for continued creative development</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <span className="text-purple-600 mt-1">•</span>
+                        <span>Present your creative vision to the group</span>
+                      </li>
+                      <li className="flex items-start space-x-2">
+                        <span className="text-purple-600 mt-1">•</span>
+                        <span>Celebrate your creative journey and growth</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="bg-white rounded-lg p-6 border border-gray-200">
+                      <h4 className="font-semibold text-gray-800 mb-3">📚 Preparation</h4>
+                      <p className="text-gray-600 text-sm">
+                        Review all your reflections and assignments from the course. Prepare a 5-minute presentation of your creative vision.
+                      </p>
+                    </div>
+                    <div className="bg-white rounded-lg p-6 border border-gray-200">
+                      <h4 className="font-semibold text-gray-800 mb-3">🎯 Activities</h4>
+                      <ul className="text-gray-600 text-sm space-y-1">
+                        <li>• Vision creation workshop</li>
+                        <li>• Action plan development</li>
+                        <li>• Final presentations</li>
+                        <li>• Celebration and closure</li>
+                      </ul>
                     </div>
                   </div>
                 </div>
