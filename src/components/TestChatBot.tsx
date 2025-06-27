@@ -23,9 +23,10 @@ export default function TestChatBot() {
   const [isLoading, setIsLoading] = useState(false)
   const [isStreaming, setIsStreaming] = useState(false)
   const [isWaitingForStream, setIsWaitingForStream] = useState(false)
-  const [aiModel, setAiModel] = useState<'pro' | 'smart' | 'internet'>('smart') // 'pro' = 2.5 Pro, 'smart' = 2.5 Flash, 'internet' = 2.0
+  const [aiModel, setAiModel] = useState<'pro' | 'smart' | 'internet'>('smart')
   const [useGrounding, setUseGrounding] = useState(true)
   const [groundingData, setGroundingData] = useState<any>(null)
+  const [persistenceError, setPersistenceError] = useState<string>('')
 
   // Automatically enable grounding when Internet model is selected
   useEffect(() => {
@@ -45,71 +46,70 @@ export default function TestChatBot() {
   const recognitionRef = useRef<any>(null)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
-  // Add error handling and storage management
-  const [storageError, setStorageError] = useState<string>('')
-  const [sessionId] = useState(() => `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`)
-
-  // Clear storage error after a few seconds
+  // Clear persistence error after 5 seconds
   useEffect(() => {
-    if (storageError) {
-      const timer = setTimeout(() => setStorageError(''), 5000)
+    if (persistenceError) {
+      const timer = setTimeout(() => {
+        setPersistenceError('')
+      }, 5000)
       return () => clearTimeout(timer)
     }
-  }, [storageError])
+  }, [persistenceError])
 
-  // Storage management functions
-  const clearBrowserStorage = () => {
+  // Function to clear browser storage and reset state
+  const clearStorageAndReset = () => {
     try {
       // Clear localStorage
-      if (typeof window !== 'undefined' && window.localStorage) {
-        const keysToRemove = []
-        for (let i = 0; i < localStorage.length; i++) {
-          const key = localStorage.key(i)
-          if (key && (key.includes('chat') || key.includes('message') || key.includes('conversation'))) {
-            keysToRemove.push(key)
-          }
+      const keysToRemove = []
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i)
+        if (key && (key.includes('chat') || key.includes('message') || key.includes('conversation'))) {
+          keysToRemove.push(key)
         }
-        keysToRemove.forEach(key => localStorage.removeItem(key))
       }
+      keysToRemove.forEach(key => localStorage.removeItem(key))
 
       // Clear sessionStorage
-      if (typeof window !== 'undefined' && window.sessionStorage) {
-        const keysToRemove = []
-        for (let i = 0; i < sessionStorage.length; i++) {
-          const key = sessionStorage.key(i)
-          if (key && (key.includes('chat') || key.includes('message') || key.includes('conversation'))) {
-            keysToRemove.push(key)
-          }
+      const sessionKeysToRemove = []
+      for (let i = 0; i < sessionStorage.length; i++) {
+        const key = sessionStorage.key(i)
+        if (key && (key.includes('chat') || key.includes('message') || key.includes('conversation'))) {
+          sessionKeysToRemove.push(key)
         }
-        keysToRemove.forEach(key => sessionStorage.removeItem(key))
       }
+      sessionKeysToRemove.forEach(key => sessionStorage.removeItem(key))
 
-      setStorageError('')
-      console.log('✅ Browser storage cleared successfully')
+      // Reset component state
+      setMessage('')
+      setResponse('')
+      setStreamingResponse('')
+      setUploadedFiles([])
+      setCapturedImage('')
+      setImagePreview('')
+      setUploadedContent('')
+      setPersistenceError('')
+
+      console.log('✅ Storage cleared and state reset')
     } catch (error) {
-      console.error('❌ Error clearing storage:', error)
-      setStorageError('Failed to clear storage')
+      console.error('Error clearing storage:', error)
     }
   }
 
+  // Check storage quota and handle errors
   const checkStorageQuota = async () => {
     try {
       if ('storage' in navigator && 'estimate' in navigator.storage) {
         const estimate = await navigator.storage.estimate()
-        const usedMB = (estimate.usage || 0) / (1024 * 1024)
-        const quotaMB = (estimate.quota || 0) / (1024 * 1024)
-        const usagePercent = (usedMB / quotaMB) * 100
-
-        console.log(`📊 Storage usage: ${usedMB.toFixed(2)}MB / ${quotaMB.toFixed(2)}MB (${usagePercent.toFixed(1)}%)`)
-
-        if (usagePercent > 80) {
-          setStorageError(`Storage almost full (${usagePercent.toFixed(1)}%). Consider clearing browser data.`)
+        const usedPercentage = ((estimate.usage || 0) / (estimate.quota || 1)) * 100
+        
+        if (usedPercentage > 90) {
+          setPersistenceError('Browser storage is full. Click "Clear Storage" to continue.')
           return false
         }
       }
       return true
     } catch (error) {
-      console.warn('⚠️ Could not check storage quota:', error)
+      console.warn('Could not check storage quota:', error)
       return true
     }
   }
@@ -554,12 +554,9 @@ export default function TestChatBot() {
     
     if (!message.trim() && selectedFiles.length === 0) return
 
-    // Check storage quota before starting
-    const hasSpace = await checkStorageQuota()
-    if (!hasSpace) {
-      setStorageError('Storage quota exceeded. Please clear browser data or use incognito mode.')
-      return
-    }
+    // Check storage quota before sending
+    const storageOk = await checkStorageQuota()
+    if (!storageOk) return
 
     // Reset states
     setIsWaitingForStream(true)
@@ -567,9 +564,9 @@ export default function TestChatBot() {
     setIsLoading(false)
     setStreamingResponse('')
     setResponse('')
-    setStorageError('')
     currentStreamingResponseRef.current = ''
     hasReceivedFirstTokenRef.current = false
+    setPersistenceError('')
 
     // Create abort controller for this request
     abortControllerRef.current = new AbortController()
@@ -578,8 +575,7 @@ export default function TestChatBot() {
       const payload: any = { 
         message, 
         useGrounding: aiModel === 'internet' ? useGrounding : false,
-        aiModel,
-        sessionId // Add session ID for better tracking
+        aiModel 
       }
       
       // Add selected files to payload
@@ -613,7 +609,7 @@ export default function TestChatBot() {
       const timeoutId = setTimeout(() => {
         if (abortControllerRef.current) {
           abortControllerRef.current.abort()
-          setStorageError('Request timeout. Please try again with a shorter message.')
+          setPersistenceError('Request timeout. Please try again with a shorter message.')
         }
       }, 60000) // 60 second timeout
 
@@ -686,7 +682,6 @@ export default function TestChatBot() {
                 const newResponse = currentStreamingResponseRef.current + data.token
                 currentStreamingResponseRef.current = newResponse
                 setStreamingResponse(newResponse)
-                console.log('Streaming token:', data.token, 'Total length:', newResponse.length)
               }
             } catch (parseError) {
               console.error('Error parsing streaming data:', parseError)
@@ -705,10 +700,17 @@ export default function TestChatBot() {
         } else {
           setResponse(currentStreamingResponseRef.current)
         }
-      } else if (error.message?.includes('quota') || error.message?.includes('storage')) {
-        setStorageError('Storage quota exceeded. Try clearing browser data or using incognito mode.')
-        setResponse('Error: Storage quota exceeded. Please clear browser data and try again.')
       } else {
+        // Handle specific error types
+        if (error.message.includes('storage') || error.message.includes('quota')) {
+          setPersistenceError('Browser storage full. Clear storage to continue.')
+        } else if (error.message.includes('timeout')) {
+          setPersistenceError('Request timeout. Please try again with a shorter message.')
+        } else if (error.message.includes('too large')) {
+          setPersistenceError('Request too large. Please reduce file sizes or message length.')
+        } else {
+          setPersistenceError('Connection error. Please check your internet and try again.')
+        }
         setResponse('Error: ' + (error instanceof Error ? error.message : 'Onbekende fout'))
       }
     } finally {
@@ -722,72 +724,6 @@ export default function TestChatBot() {
   const stopGeneration = () => {
     if (abortControllerRef.current) {
       abortControllerRef.current.abort()
-    }
-  }
-
-  // Legacy non-streaming function (fallback)
-  const sendMessage = async () => {
-    const selectedFiles = getSelectedFiles()
-    
-    if (!message.trim() && selectedFiles.length === 0) return
-
-    setIsLoading(true)
-    try {
-      const payload: any = { 
-        message, 
-        useGrounding: aiModel === 'internet' ? useGrounding : false,
-        aiModel,
-        sessionId
-      }
-      
-      // Add selected files to payload
-      if (selectedFiles.length > 0) {
-        // Send ALL selected images for Gemini Vision
-        const selectedImages = selectedFiles.filter(file => file.type === 'image')
-        if (selectedImages.length > 0) {
-          payload.images = selectedImages.map(img => img.content)
-        }
-        
-        // Add context from all selected files
-        const fileContexts = selectedFiles.map((file, index) => {
-          const fileType = file.type === 'image' ? 'Afbeelding' : 
-                          file.type === 'document' ? 'Document' : 
-                          file.type === 'audio' ? 'Audio Transcriptie' : 'Data'
-          if (file.type === 'image') {
-            return `[${fileType} ${index + 1}: ${file.name}]\n[Afbeelding bijgevoegd voor analyse]`
-          } else {
-            return `[${fileType}: ${file.name}]\n${file.content}`
-          }
-        }).join('\n\n---\n\n')
-        
-        if (message.trim()) {
-          payload.message = `${message}\n\n=== BIJGEVOEGDE BESTANDEN ===\n${fileContexts}`
-        } else {
-          payload.message = `Analyseer de volgende bestanden:\n\n${fileContexts}`
-        }
-      }
-
-      const res = await fetch('/api/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
-      })
-
-      if (!res.ok) {
-        const errorData = await res.json()
-        throw new Error(errorData.error || 'Er is een fout opgetreden')
-      }
-
-      const data = await res.json()
-      setResponse(data.response)
-      setGroundingData(data.grounding || null)
-    } catch (error) {
-      console.error('Error:', error)
-      setResponse('Error: ' + (error instanceof Error ? error.message : 'Onbekende fout'))
-    } finally {
-      setIsLoading(false)
     }
   }
 
@@ -806,27 +742,31 @@ export default function TestChatBot() {
         </span>
         Test je API Key
       </h3>
-      
-      {/* Storage Error Alert */}
-      {storageError && (
+
+      {/* Persistence Error Alert */}
+      {persistenceError && (
         <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg">
-          <div className="flex items-start justify-between">
-            <div className="flex items-start space-x-2">
-              <svg className="w-5 h-5 text-red-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center">
+              <svg className="w-5 h-5 text-red-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <div>
-                <h4 className="text-red-800 font-medium">Storage Issue</h4>
-                <p className="text-red-700 text-sm">{storageError}</p>
-              </div>
+              <span className="text-red-800 font-medium">Storage Issue:</span>
             </div>
             <button
-              onClick={clearBrowserStorage}
-              className="px-3 py-1 bg-red-600 text-white text-sm rounded hover:bg-red-700 transition-colors"
+              onClick={() => setPersistenceError('')}
+              className="text-red-600 hover:text-red-800"
             >
-              Clear Storage
+              ×
             </button>
           </div>
+          <p className="text-red-700 text-sm mt-1">{persistenceError}</p>
+          <button
+            onClick={clearStorageAndReset}
+            className="mt-2 px-3 py-1 bg-red-600 text-white text-sm rounded hover:bg-red-700 transition-colors"
+          >
+            Clear Storage & Reset
+          </button>
         </div>
       )}
       
@@ -1032,8 +972,6 @@ export default function TestChatBot() {
               </div>
             </div>
           </div>
-
-
         </div>
 
         {/* Input Area */}
@@ -1045,7 +983,6 @@ export default function TestChatBot() {
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}>
-
 
           {/* Drag & Drop Overlay */}
           {isDragOver && (
@@ -1140,8 +1077,6 @@ export default function TestChatBot() {
             </div>
           )}
         </div>
-
-
 
         {/* Response Area */}
         {isWaitingForStream && (
@@ -1278,7 +1213,6 @@ export default function TestChatBot() {
                 )}
               </div>
             )}
-
           </div>
         )}
 
@@ -1287,7 +1221,7 @@ export default function TestChatBot() {
           ref={fileInputRef}
           type="file"
           multiple
-                      accept=".docx,.pdf,.txt,.md,.csv,.json,.jpg,.jpeg,.png,.gif,.webp,.bmp,image/*,.mp3,.wav,.ogg,.m4a,.aac,.flac,.mp4,.mpeg,.mpga,.webm,audio/*"
+          accept=".docx,.pdf,.txt,.md,.csv,.json,.jpg,.jpeg,.png,.gif,.webp,.bmp,image/*,.mp3,.wav,.ogg,.m4a,.aac,.flac,.mp4,.mpeg,.mpga,.webm,audio/*"
           onChange={(e) => {
             const files = e.target.files
             if (files && files.length > 0) {
