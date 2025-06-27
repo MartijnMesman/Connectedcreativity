@@ -45,6 +45,75 @@ export default function TestChatBot() {
   const recognitionRef = useRef<any>(null)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
+  // Add error handling and storage management
+  const [storageError, setStorageError] = useState<string>('')
+  const [sessionId] = useState(() => `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`)
+
+  // Clear storage error after a few seconds
+  useEffect(() => {
+    if (storageError) {
+      const timer = setTimeout(() => setStorageError(''), 5000)
+      return () => clearTimeout(timer)
+    }
+  }, [storageError])
+
+  // Storage management functions
+  const clearBrowserStorage = () => {
+    try {
+      // Clear localStorage
+      if (typeof window !== 'undefined' && window.localStorage) {
+        const keysToRemove = []
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i)
+          if (key && (key.includes('chat') || key.includes('message') || key.includes('conversation'))) {
+            keysToRemove.push(key)
+          }
+        }
+        keysToRemove.forEach(key => localStorage.removeItem(key))
+      }
+
+      // Clear sessionStorage
+      if (typeof window !== 'undefined' && window.sessionStorage) {
+        const keysToRemove = []
+        for (let i = 0; i < sessionStorage.length; i++) {
+          const key = sessionStorage.key(i)
+          if (key && (key.includes('chat') || key.includes('message') || key.includes('conversation'))) {
+            keysToRemove.push(key)
+          }
+        }
+        keysToRemove.forEach(key => sessionStorage.removeItem(key))
+      }
+
+      setStorageError('')
+      console.log('✅ Browser storage cleared successfully')
+    } catch (error) {
+      console.error('❌ Error clearing storage:', error)
+      setStorageError('Failed to clear storage')
+    }
+  }
+
+  const checkStorageQuota = async () => {
+    try {
+      if ('storage' in navigator && 'estimate' in navigator.storage) {
+        const estimate = await navigator.storage.estimate()
+        const usedMB = (estimate.usage || 0) / (1024 * 1024)
+        const quotaMB = (estimate.quota || 0) / (1024 * 1024)
+        const usagePercent = (usedMB / quotaMB) * 100
+
+        console.log(`📊 Storage usage: ${usedMB.toFixed(2)}MB / ${quotaMB.toFixed(2)}MB (${usagePercent.toFixed(1)}%)`)
+
+        if (usagePercent > 80) {
+          setStorageError(`Storage almost full (${usagePercent.toFixed(1)}%). Consider clearing browser data.`)
+          return false
+        }
+      }
+      return true
+    } catch (error) {
+      console.warn('⚠️ Could not check storage quota:', error)
+      return true
+    }
+  }
+
   // Setup paste event listeners
   useEffect(() => {
     const textarea = textareaRef.current
@@ -485,12 +554,20 @@ export default function TestChatBot() {
     
     if (!message.trim() && selectedFiles.length === 0) return
 
+    // Check storage quota before starting
+    const hasSpace = await checkStorageQuota()
+    if (!hasSpace) {
+      setStorageError('Storage quota exceeded. Please clear browser data or use incognito mode.')
+      return
+    }
+
     // Reset states
     setIsWaitingForStream(true)
     setIsStreaming(false)
     setIsLoading(false)
     setStreamingResponse('')
     setResponse('')
+    setStorageError('')
     currentStreamingResponseRef.current = ''
     hasReceivedFirstTokenRef.current = false
 
@@ -501,7 +578,8 @@ export default function TestChatBot() {
       const payload: any = { 
         message, 
         useGrounding: aiModel === 'internet' ? useGrounding : false,
-        aiModel 
+        aiModel,
+        sessionId // Add session ID for better tracking
       }
       
       // Add selected files to payload
@@ -531,7 +609,14 @@ export default function TestChatBot() {
         }
       }
 
-      // Start streaming request
+      // Start streaming request with timeout
+      const timeoutId = setTimeout(() => {
+        if (abortControllerRef.current) {
+          abortControllerRef.current.abort()
+          setStorageError('Request timeout. Please try again with a shorter message.')
+        }
+      }, 60000) // 60 second timeout
+
       const response = await fetch('/api/chat-stream', {
         method: 'POST',
         headers: {
@@ -541,7 +626,12 @@ export default function TestChatBot() {
         signal: abortControllerRef.current.signal
       })
 
+      clearTimeout(timeoutId)
+
       if (!response.ok) {
+        if (response.status === 413) {
+          throw new Error('Request too large. Please reduce file sizes or message length.')
+        }
         throw new Error(`HTTP error! status: ${response.status}`)
       }
 
@@ -615,6 +705,9 @@ export default function TestChatBot() {
         } else {
           setResponse(currentStreamingResponseRef.current)
         }
+      } else if (error.message?.includes('quota') || error.message?.includes('storage')) {
+        setStorageError('Storage quota exceeded. Try clearing browser data or using incognito mode.')
+        setResponse('Error: Storage quota exceeded. Please clear browser data and try again.')
       } else {
         setResponse('Error: ' + (error instanceof Error ? error.message : 'Onbekende fout'))
       }
@@ -643,7 +736,8 @@ export default function TestChatBot() {
       const payload: any = { 
         message, 
         useGrounding: aiModel === 'internet' ? useGrounding : false,
-        aiModel 
+        aiModel,
+        sessionId
       }
       
       // Add selected files to payload
@@ -712,6 +806,29 @@ export default function TestChatBot() {
         </span>
         Test je API Key
       </h3>
+      
+      {/* Storage Error Alert */}
+      {storageError && (
+        <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+          <div className="flex items-start justify-between">
+            <div className="flex items-start space-x-2">
+              <svg className="w-5 h-5 text-red-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <div>
+                <h4 className="text-red-800 font-medium">Storage Issue</h4>
+                <p className="text-red-700 text-sm">{storageError}</p>
+              </div>
+            </div>
+            <button
+              onClick={clearBrowserStorage}
+              className="px-3 py-1 bg-red-600 text-white text-sm rounded hover:bg-red-700 transition-colors"
+            >
+              Clear Storage
+            </button>
+          </div>
+        </div>
+      )}
       
       <div className="space-y-4">
         {/* File Manager */}
