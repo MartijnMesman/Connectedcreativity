@@ -41,13 +41,56 @@ export default function Home() {
           <h1 className="text-5xl font-bold text-gray-800 mb-6">
             Connected Creativity
           </h1>
-          <p className="text-xl text-gray-600 mb-4">
+          <p className="text-xl text-gray-600 mb-8">
             A Holistic Design Curriculum
           </p>
-          
-          <p className="text-lg text-purple-700 font-medium mb-8 max-w-3xl mx-auto">
-            Strengthen your creative skills through arts-based methods and develop a deeper connection with yourself, others, and the world around you.
-          </p>
+
+          {/* Welcome Message */}
+          <div className="bg-white/70 backdrop-blur-sm rounded-xl p-8 border border-purple-200 mb-8 text-left max-w-3xl mx-auto">
+            <div className="flex items-center mb-4">
+              <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mr-3">
+                <span className="text-purple-600 text-lg">👋</span>
+              </div>
+              <h2 className="text-xl font-semibold text-gray-800">Welcome to Connected Creativity</h2>
+            </div>
+            
+            <div className="space-y-4 text-gray-700 leading-relaxed">
+              <p>
+                Welcome to the "Connected Creativity" course. This is where you'll explore creative thinking alongside self-reflection and curiosity.
+              </p>
+              
+              <p>
+                This online course is complementary to the in-person sessions that you will have at the university.
+              </p>
+              
+              <div>
+                <p className="font-medium text-gray-800 mb-2">What you'll find here:</p>
+                <ul className="space-y-2 ml-4">
+                  <li className="flex items-start">
+                    <span className="text-purple-600 mr-2">•</span>
+                    <span><strong>Five self-study sessions.</strong> Each session contains recorded material (videos or audios) to guide you through the study.</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-purple-600 mr-2">•</span>
+                    <span><strong>Additional videos and readings,</strong> for those who would like to go deeper and explore the subjects discussed.</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-purple-600 mr-2">•</span>
+                    <span><strong>Creative journaling sheets</strong> that you can add to your portfolio.</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg p-4 border border-purple-100">
+                <p className="text-purple-800 font-medium">
+                  Good luck on this journey!
+                </p>
+                <p className="text-purple-700 text-sm mt-1">
+                  — The Connected Creativity Team
+                </p>
+              </div>
+            </div>
+          </div>
 
           {/* Course Info Cards */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
